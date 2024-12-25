@@ -90,6 +90,230 @@ def login_request(request):
                 return render(request, 'branches/branch1/branch1index.html', context)
 
 
+            if role == 'Branch2':
+                request.session['username'] = username
+                us = request.session['username']
+                import branch2app
+                bgs = branch2app.models.background_color.objects.all().filter(username=us)
+                bg = branch2app.models.background_color.objects.all().filter(username=us).exists()
+                a = []
+                if bg == True:
+                    a.append(us)
+                else:
+                    a.append('f')
+
+                context = {
+                    'bg': bgs,
+                    'us': us,
+                    'th_us': a[0],
+                    'user': loginobj,
+                    'name': us
+                }
+                return render(request, 'branches/branch2/branch1index.html', context)
+
+
+            if role == 'Branch3':
+                request.session['username'] = username
+                us = request.session['username']
+                import branch3app
+                bgs = branch3app.models.background_color.objects.all().filter(username=us)
+                bg = branch3app.models.background_color.objects.all().filter(username=us).exists()
+                a = []
+                if bg == True:
+                    a.append(us)
+                else:
+                    a.append('f')
+
+                context = {
+                    'bg': bgs,
+                    'us': us,
+                    'th_us': a[0],
+                    'user': loginobj,
+                    'name': us
+                }
+                return render(request, 'branches/branch3/branch1index.html', context)
+
+
+            if role == 'Branch4':
+                request.session['username'] = username
+                us = request.session['username']
+                import branch4app
+                bgs = branch4app.models.background_color.objects.all().filter(username=us)
+                bg = branch4app.models.background_color.objects.all().filter(username=us).exists()
+                a = []
+                if bg == True:
+                    a.append(us)
+                else:
+                    a.append('f')
+
+                context = {
+                    'bg': bgs,
+                    'us': us,
+                    'th_us': a[0],
+                    'user': loginobj,
+                    'name': us
+                }
+                return render(request, 'branches/branch4/branch1index.html', context)
+
+
+            if role == 'Branch5':
+                request.session['username'] = username
+                us = request.session['username']
+                import branch5app
+                bgs = branch5app.models.background_color.objects.all().filter(username=us)
+                bg = branch5app.models.background_color.objects.all().filter(username=us).exists()
+                a = []
+                if bg == True:
+                    a.append(us)
+                else:
+                    a.append('f')
+
+                context = {
+                    'bg': bgs,
+                    'us': us,
+                    'th_us': a[0],
+                    'user': loginobj,
+                    'name': us
+                }
+                return render(request, 'branches/branch5/branch1index.html', context)
+
+
+            if role == 'Branch6':
+                request.session['username'] = username
+                us = request.session['username']
+                import branch6app
+                bgs = branch6app.models.background_color.objects.all().filter(username=us)
+                bg = branch6app.models.background_color.objects.all().filter(username=us).exists()
+                a = []
+                if bg == True:
+                    a.append(us)
+                else:
+                    a.append('f')
+
+                context = {
+                    'bg': bgs,
+                    'us': us,
+                    'th_us': a[0],
+                    'user': loginobj,
+                    'name': us
+                }
+                return render(request, 'branches/branch6/branch1index.html', context)
+
+            if role == 'Branch7':
+                request.session['username'] = username
+                us = request.session['username']
+                import branch7app
+                bgs = branch7app.models.background_color.objects.all().filter(username=us)
+                bg = branch7app.models.background_color.objects.all().filter(username=us).exists()
+                a = []
+                if bg == True:
+                    a.append(us)
+                else:
+                    a.append('f')
+
+                context = {
+                    'bg': bgs,
+                    'us': us,
+                    'th_us': a[0],
+                    'user': loginobj,
+                    'name': us
+                }
+                return render(request, 'branches/branch7/branch1index.html', context)
+
+            if role == 'Branch21':
+                request.session['username'] = username
+                us = request.session['username']
+                import branch21app
+                bgs = branch21app.models.background_color.objects.all().filter(username=us)
+                bg = branch21app.models.background_color.objects.all().filter(username=us).exists()
+                a = []
+                if bg == True:
+                    a.append(us)
+                else:
+                    a.append('f')
+
+                context = {
+                    'bg': bgs,
+                    'us': us,
+                    'th_us': a[0],
+                    'user': loginobj,
+                    'name': us
+                }
+                return render(request, 'branches/branch21/branch1index.html', context)
+
+            if role == 'Branch22':
+                request.session['username'] = username
+                us = request.session['username']
+                import branch22app
+                bgs = branch22app.models.background_color.objects.all().filter(username=us)
+                bg = branch22app.models.background_color.objects.all().filter(username=us).exists()
+                a = []
+                if bg == True:
+                    a.append(us)
+                else:
+                    a.append('f')
+
+                context = {
+                    'bg': bgs,
+                    'us': us,
+                    'th_us': a[0],
+                    'user': loginobj,
+                    'name': us
+                }
+                return render(request, 'branches/branch22/branch1index.html', context)
+
+            if role == 'Branch23':
+                request.session['username'] = username
+                us = request.session['username']
+                import branch23app
+                bgs = branch23app.models.background_color.objects.all().filter(username=us)
+                bg = branch23app.models.background_color.objects.all().filter(username=us).exists()
+                a = []
+                if bg == True:
+                    a.append(us)
+                else:
+                    a.append('f')
+
+                context = {
+                    'bg': bgs,
+                    'us': us,
+                    'th_us': a[0],
+                    'user': loginobj,
+                    'name': us
+                }
+                return render(request, 'branches/branch23/branch1index.html', context)
+
+            if role == 'Branch24':
+                request.session['username'] = username
+                us = request.session['username']
+                import branch24app
+                bgs = branch24app.models.background_color.objects.all().filter(username=us)
+                bg = branch24app.models.background_color.objects.all().filter(username=us).exists()
+                a = []
+                if bg == True:
+                    a.append(us)
+                else:
+                    a.append('f')
+
+                context = {
+                    'bg': bgs,
+                    'us': us,
+                    'th_us': a[0],
+                    'user': loginobj,
+                    'name': us
+                }
+                return render(request, 'branches/branch24/branch1index.html', context)
+
+
+
+
+
+
+
+
+
+
+
 
 
             else:
