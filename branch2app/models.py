@@ -5,7 +5,6 @@ from django.db import models
 class br2test(models.Model):
     br2test_name = models.CharField(max_length=10)
 
-
 class room_pg1(models.Model):
     roon_no = models.IntegerField()
     room_name = models.CharField(max_length=100)
