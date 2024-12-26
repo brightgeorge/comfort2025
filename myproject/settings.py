@@ -56,6 +56,11 @@ INSTALLED_APPS = [
     'branch15app',
     'branch16app',
     'branch17app',
+
+    'branch21app',
+    'branch22app',
+    'branch23app',
+    'branch24app',
 ]
 
 MIDDLEWARE = [
@@ -106,8 +111,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'comfort2025',
         'USER': 'root',
-        'PASSWORD': '#123.com#',
-        #'PASSWORD': '',
+        #'PASSWORD': '#123.com#',
+        'PASSWORD': '',
         'HOST': 'localhost',
 
     }
