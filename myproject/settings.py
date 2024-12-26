@@ -111,8 +111,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'comfort2025',
         'USER': 'root',
-        #'PASSWORD': '#123.com#',
-        'PASSWORD': '',
+        'PASSWORD': '#123.com#',
+        #'PASSWORD': '',
         'HOST': 'localhost',
 
     }
