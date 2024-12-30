@@ -15,6 +15,9 @@ urlpatterns = [
     path('user_update/<id>', views.user_update, name='user_update'),
     # ****user end here ******
 
+    path('select_branch/',views.select_branch,name='select_branch'),
+    path('admin_home/',views.admin_home,name='admin_home'),
+
     # logout
     path('logout/', views.logout, name='logout'),
 
