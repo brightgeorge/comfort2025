@@ -2194,7 +2194,9 @@ def daily_ledger_based_reports5(request):
         if dates == None:
             d = datetime.datetime.now()
             month = d.strftime("%m")
+            print('month',month)
             day=d.strftime(("%d"))
+            print('day',day)
             r_dates = d
         else:
             dl = []

@@ -7,6 +7,7 @@ from . import reports21
 from . import payment21
 from . import admin_dashboard_calculations_br21
 from . import accounts21
+from . import branch_settings21
 
 urlpatterns = [
 
@@ -644,6 +645,11 @@ urlpatterns = [
     path('delete_share_holders21/<id>', accounts21.delete_share_holders21, name='delete_share_holders21'),
     path('view_deleted_share_holders21', accounts21.view_deleted_share_holders21, name='view_deleted_share_holders21'),
 
+    #############BRANCH SETTINGS START HERE ########################
+
+    path('guest_rent_update_ob_ch21/', branch_settings21.guest_rent_update_ob_ch21, name='guest_rent_update_ob_ch21'),
+
+    ############BRANCH SETTINGS END HERE ############################
 
 ]
 
