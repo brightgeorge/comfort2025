@@ -66,6 +66,9 @@ INSTALLED_APPS = [
     'branch32app',
     'branch33app',
     'branch34app',
+
+    'branch41app',
+    'branch42app',
 ]
 
 MIDDLEWARE = [

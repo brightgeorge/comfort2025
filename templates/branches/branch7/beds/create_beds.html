@@ -74,7 +74,7 @@
      </a>
    </div>
    <ul class="sidebar-menu do-nicescrol">
-      <li class="sidebar-header"><h6 style="text-decoration:underline;">.......* COMFORT 7 *.......</h6></li>
+      <li class="sidebar-header"><h6 style="text-decoration:underline;">.......* COMFORT 6 *.......</h6></li>
 
       <li>
         <a href="{% url 'branch1_dashboard_ob_ch7' %}">
@@ -272,7 +272,11 @@
 
 
            <hr>
+               <!--
             <form action="{% url 'single_pg1_bed_create_regi_ob_ch7' %}" method="post" enctype="multipart/form-data">
+                -->
+
+                <form action="{% url 'multiple_single_pg1_bed_create_regi7' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 			<div class="form-group">
 				<label for="input-11">Enter Room No</label>
