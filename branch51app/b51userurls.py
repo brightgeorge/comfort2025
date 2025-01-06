@@ -1,7 +1,6 @@
 from django.urls import path, include
 
 from . import admin_branch51
-from . import admin_branch51
 from . import branch51
 from . import reports51
 from . import payment51
