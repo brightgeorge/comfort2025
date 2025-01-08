@@ -7,6 +7,7 @@ from . import reports42
 from . import payment42
 from . import admin_dashboard_calculations_br42
 from . import accounts42
+from . import branch_settings42
 
 urlpatterns = [
 
@@ -644,6 +645,11 @@ urlpatterns = [
     path('delete_share_holders42/<id>', accounts42.delete_share_holders42, name='delete_share_holders42'),
     path('view_deleted_share_holders42', accounts42.view_deleted_share_holders42, name='view_deleted_share_holders42'),
 
+    #############BRANCH SETTINGS START HERE ########################
+
+    path('guest_rent_update_ob_ch42/', branch_settings42.guest_rent_update_ob_ch42, name='guest_rent_update_ob_ch42'),
+
+    ############BRANCH SETTINGS END HERE ############################
 
 ]
 
