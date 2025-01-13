@@ -4594,6 +4594,66 @@ def regi_share_holders31(request):
         messages.info(request,me)
         return view_share_holders31(request)
 
+
+
+
+def regi_multiple_share_holders31(request):
+    if 'username' in request.session:
+        a=share_holders.objects.all().filter(flag=1)
+        tsp=[]
+        for i in a:
+            tsp.append(float(i.share_holders_percentage))
+        sa=sum(tsp)
+        print('sa',sa)
+        share = request.POST.get('share')
+        tsa=sa+float(share)
+        print('tsa', tsa)
+        if tsa <101:
+            if request.method == 'POST':
+                name = [
+                    'HASHIM',
+                    'MUSTHAFA',
+                    'HASSAN',
+                    'SHAKEEL',
+                    'AJIMON',
+                    'ZUBAIR',
+                    'SHINAD',
+                    'SHAMEEL',
+                    'ASHRAF',
+
+                ]
+                share = [
+                    '25',
+                    '22.5',
+                    '15',
+                    '10',
+                    '10',
+                    '5',
+                    '5',
+                    '5',
+                    '2.5',
+
+                ]
+
+                for i in range(len(name)):
+                    ic = share_holders()
+                    ic.share_holders_name = name[i]
+                    ic.share_holders_percentage = share[i]
+                    ic.created_by = 'CB ' + request.session['username']
+                    import datetime
+                    ic.cb_date = datetime.datetime.now()
+                    ic.ub_flag = 0
+                    ic.flag = 1
+                    ic.save()
+
+            return view_share_holders31(request)
+        me= 'SHARE HOLDER DOES NOT CREATED, BECAUSE SHARE % OUT OF 100!. NOW TOTAL % IS ' + str(tsa)
+        messages.info(request,me)
+        return view_share_holders31(request)
+
+
+
+
 def update_share_holders31(request,id):
     if 'username' in request.session:
         if request.method == 'POST':

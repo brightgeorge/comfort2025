@@ -643,6 +643,7 @@ urlpatterns = [
     path('delete_share_holders51/<id>', accounts51.delete_share_holders51, name='delete_share_holders51'),
     path('view_deleted_share_holders51', accounts51.view_deleted_share_holders51, name='view_deleted_share_holders51'),
 
+    path('regi_multiple_share_holders51', accounts51.regi_multiple_share_holders51, name='regi_multiple_share_holders51'),
 
 ]
 

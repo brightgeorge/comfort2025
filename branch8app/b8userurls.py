@@ -644,6 +644,7 @@ urlpatterns = [
     path('delete_share_holders8/<id>', accounts8.delete_share_holders8, name='delete_share_holders8'),
     path('view_deleted_share_holders8', accounts8.view_deleted_share_holders8, name='view_deleted_share_holders8'),
 
+    path('regi_multiple_share_holders8', accounts8.regi_multiple_share_holders8, name='regi_multiple_share_holders8'),
 
 ]
 

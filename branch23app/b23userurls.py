@@ -645,6 +645,8 @@ urlpatterns = [
     path('delete_share_holders23/<id>', accounts23.delete_share_holders23, name='delete_share_holders23'),
     path('view_deleted_share_holders23', accounts23.view_deleted_share_holders23, name='view_deleted_share_holders23'),
 
+    path('regi_multiple_share_holders23', accounts23.regi_multiple_share_holders23, name='regi_multiple_share_holders23'),
+
     #############BRANCH SETTINGS START HERE ########################
 
     path('guest_rent_update_ob_ch23/', branch_settings23.guest_rent_update_ob_ch23, name='guest_rent_update_ob_ch23'),
