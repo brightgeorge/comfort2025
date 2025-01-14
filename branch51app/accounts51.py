@@ -130,6 +130,78 @@ def regi_new_category51(request):
         return render(request, 'index.html')
 
 
+
+def regi_multiple_new_category51(request):
+    if 'username' in request.session:
+        category_names = request.POST.get('category')
+        ir = category.objects.all().filter(category_name=category_names,flag=1).exists()
+
+        if ir == True:
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'item': category.objects.all().filter(flag=1).order_by('-id'),
+                'msg': 'danger',
+                'category': category.objects.all().filter(flag=1).order_by('-id'),
+            }
+            messages.info(request, 'CATERGORY ALREADY EXISTS')
+            return render(request, 'branches/branch51/accounts/creater_master/items/view_all_items.html', context)
+        else:
+
+            multiple_category_names = [
+                'COMFORT 1',
+                'KITCHEN SALARY',
+                'SALARY',
+                'GROCERRY',
+            ]
+
+            for i in range(len(multiple_category_names)):
+                ic = category()
+                ic.category_name = multiple_category_names[i]
+                ic.enter_by = 'CB ' + request.session['username']
+                import datetime
+                ic.cb_date = datetime.datetime.now()
+                ic.ub_flag = 0
+                ic.flag = 1
+                ic.save()
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'category' : category.objects.all().filter(flag=1).order_by('-id'),
+
+            }
+            messages.info(request, 'CATEGORY CREATED SUCCESSFULLY')
+            return render(request,'branches/branch51/accounts/creater_master/category/view_all_category.html',context)
+        return render(request, 'index.html')
+
+
+
 def update_category51(request,id):
     if 'username' in request.session:
         if request.method == 'POST':

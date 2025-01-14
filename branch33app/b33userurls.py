@@ -515,6 +515,8 @@ urlpatterns = [
     path('delete_category33/<id>', accounts33.delete_category33, name='delete_category33'),
     path('view_all_category_delete33/', accounts33.view_all_category_delete33, name='view_all_category_delete33'),
 
+    path('regi_multiple_new_category33/', accounts33.regi_multiple_new_category33, name='regi_multiple_new_category33'),
+
     ##*****************CATERY CREATER END HERE
 
 

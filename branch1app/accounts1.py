@@ -130,6 +130,80 @@ def regi_new_category1(request):
         return render(request, 'index.html')
 
 
+
+
+def regi_multiple_new_category1(request):
+    if 'username' in request.session:
+        category_names = request.POST.get('category')
+        ir = category.objects.all().filter(category_name=category_names,flag=1).exists()
+
+        if ir == True:
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'item': category.objects.all().filter(flag=1).order_by('-id'),
+                'msg': 'danger',
+                'category': category.objects.all().filter(flag=1).order_by('-id'),
+            }
+            messages.info(request, 'CATERGORY ALREADY EXISTS')
+            return render(request, 'branches/branch1/accounts/creater_master/items/view_all_items.html', context)
+        else:
+
+            multiple_category_names = [
+                'COMFORT 1',
+                'KITCHEN SALARY',
+                'SALARY',
+                'GROCERRY',
+            ]
+
+            for i in range(len(multiple_category_names)):
+                ic = category()
+                ic.category_name = multiple_category_names[i]
+                ic.enter_by = 'CB ' + request.session['username']
+                import datetime
+                ic.cb_date = datetime.datetime.now()
+                ic.ub_flag = 0
+                ic.flag = 1
+                ic.save()
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'category' : category.objects.all().filter(flag=1).order_by('-id'),
+
+            }
+            messages.info(request, 'CATEGORY CREATED SUCCESSFULLY')
+            return render(request,'branches/branch1/accounts/creater_master/category/view_all_category.html',context)
+        return render(request, 'index.html')
+
+
+
+
 def update_category1(request,id):
     if 'username' in request.session:
         if request.method == 'POST':
@@ -418,6 +492,303 @@ def regi_new_item1(request):
             messages.info(request, 'ITEM CREATED SUCCESSFULLY !!!')
             return render(request,'branches/branch1/accounts/creater_master/items/view_all_items.html',context)
         return render(request, 'index.html')
+
+
+def regi_multiple_new_item1(request):
+    if 'username' in request.session:
+        item_name = request.POST.get('name')
+        item_category = request.POST.get('category')
+        ir = table1.objects.all().filter(name=item_name,flag=1).exists()
+
+        if ir == True:
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'item': table1.objects.all().filter(flag=1).order_by('-id'),
+                'msg' : 'danger',
+                'category': category.objects.all().filter(flag=1).order_by('-id'),
+            }
+            messages.info(request,'ITEM ALREADY EXISTS')
+            return render(request, 'branches/branch1/accounts/creater_master/items/view_all_items.html', context)
+        else:
+            item_name = [
+                'GEYZER',
+                'CHOTU NANDAN',
+                'TDS',
+                'UPS SERVICE',
+                'POLICE REGISTRATION',
+                'DRAINAGE CLEANING',
+                'GARBAGE',
+                'BED',
+                'ZAKATH',
+                'BRIGHT SALARY',
+                'ZAHEER',
+                'ZIYAD',
+                'D K',
+                'ANEEZ',
+                'PRADEEP',
+                'MUNNA',
+                'CHOTU',
+                'COMMISION',
+                'KITCHEN ACCESSORIES',
+                'OTHER EXPENSES',
+                'LOBA',
+                'TV',
+                'SOYABEEN',
+                'JATHIKKA',
+                'JATHIPATHRI',
+                'STAR',
+                'RICE POWDER',
+                'CHILLY',
+                'GARLIC',
+                'GINGER',
+                'REFUND',
+                'IDLY COVER',
+                'FRIDAY MESS',
+                'EXO',
+                'COLOUR',
+                'CLOVE',
+                'LG POWDER',
+                'LG GATTY',
+                'VINEGAR',
+                'ROSE WATER',
+                'CORN FLOUR',
+                'MENTHIA',
+                'MUSTURD',
+                'PEPPER',
+                'SAUMP',
+                'JEERA',
+                'LAVANG',
+                'KISMIS',
+                'CASHEW',
+                'ELAKKA',
+                'BABY CASHEW',
+                'JAGGERRY',
+                'CORRIANDER',
+                'GUNDOOR CHILLI',
+                'TAMARIND',
+                'SALT POWDER',
+                'SALT CHRISTAL',
+                'BESAN',
+                'URAD DAL',
+                'MOONG DAL',
+                'TOOR DAL',
+                'GRAMDAL',
+                'FRIED GRAM',
+                'GREENPIECE',
+                'KAABULI',
+                'GRAM',
+                'MOONG',
+                'RAVA',
+                'MIXED ITEM',
+                'WELDING WORK',
+                'POTATO',
+                'PAPER',
+                'SEMIYA',
+                'GHEE',
+                'GLASS',
+                'GRINDING',
+                'AUTOMATIC',
+                'POLICE',
+                'PAINTING',
+                'PLUMBING',
+                'ELECTRIC',
+                'ELECTRIC BILL',
+                'FAN',
+                'FAN REP',
+                'CLEANING ACCESSORIES',
+                'CURD',
+                'MILK',
+                'PALM OIL',
+                'TRANSPORT CHARGE',
+                'VEHICLE MAINTANANCE',
+                'PETROL',
+                'WATER PURIFY',
+                'TANKER',
+                'BORE',
+                'DAILY GUEST RENT',
+                'MONTHLY GUEST RENT',
+                'MONTHLY BUILDING RENT',
+                'MESS RENT',
+                'ION',
+                'TATA SKY',
+                'SUGAR',
+                'AATTA',
+                'MAIDA',
+                'BIRIYANI RICE',
+                'STEAM RICE',
+                'IDLY RICE',
+                'DOSHA RICE',
+                'EGG',
+                'FISH',
+                'CHICKEN',
+                'VEGITABLE',
+                'TOTAL GROCERRY',
+
+            ]
+            item_category = [
+                'COMFORT 1',
+                'SALARY',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'SALARY',
+                'COMFORT 1',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'COMFORT 1',
+                'GROCERRY',
+                'COMFORT 1',
+                'GROCERRY',
+                'COMFORT 1',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'COMFORT 1',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'COMFORT 1',
+                'KITCHEN SALARY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'COMFORT 1',
+                'COMFORT 1',
+                'GROCERRY',
+                'COMFORT 1',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'COMFORT 1',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+
+            ]
+            for i in range(len(item_name)):
+                ic = table1()
+                ic.name = item_name[i]
+                ic.item_category = item_category[i]
+                ic.created_by = 'CB '+ request.session['username']
+                import datetime
+                ic.cb_date = datetime.datetime.now()
+                ic.ub_flag = 0
+                ic.flag = 1
+                ic.save()
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'item' : table1.objects.all().filter(flag=1).order_by('-id'),
+                'msg' : 'success',
+                'category': category.objects.all().filter(flag=1).order_by('-id'),
+            }
+            messages.info(request, 'ITEM CREATED SUCCESSFULLY !!!')
+            return render(request,'branches/branch1/accounts/creater_master/items/view_all_items.html',context)
+        return render(request, 'index.html')
+
+
 
 def delete_item1(request,id):
     if 'username' in request.session:
