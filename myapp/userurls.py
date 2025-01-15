@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from . import guest_calculations
 
 urlpatterns = [
 
@@ -17,6 +18,9 @@ urlpatterns = [
 
     path('select_branch/',views.select_branch,name='select_branch'),
     path('admin_home/',views.admin_home,name='admin_home'),
+
+    path('guest_details/',guest_calculations.guest_details,name='guest_details'),
+    path('branchwise_guest_details/',guest_calculations.branchwise_guest_details,name='branchwise_guest_details'),
 
     # logout
     path('logout/', views.logout, name='logout'),
