@@ -493,6 +493,153 @@ def regi_new_item2(request):
             return render(request,'branches/branch2/accounts/creater_master/items/view_all_items.html',context)
         return render(request, 'index.html')
 
+
+
+
+
+def regi_multiple_new_item2(request):
+    if 'username' in request.session:
+        item_name = request.POST.get('name')
+        item_category = request.POST.get('category')
+        ir = table1.objects.all().filter(name=item_name,flag=1).exists()
+
+        if ir == True:
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'item': table1.objects.all().filter(flag=1).order_by('-id'),
+                'msg' : 'danger',
+                'category': category.objects.all().filter(flag=1).order_by('-id'),
+            }
+            messages.info(request,'ITEM ALREADY EXISTS')
+            return render(request, 'branches/branch2/accounts/creater_master/items/view_all_items.html', context)
+        else:
+            item_name = [
+                'TDS TAX',
+                'UPS SERVICE',
+                'CLEANING BOYS',
+                'GARBAGE',
+                'POLICE REGISTRATION',
+                'BED',
+                'ZAKATH',
+                'BRIGHT SALARY',
+                'ZIYAD',
+                'D K',
+                'AMMA',
+                'MANGAL',
+                'OTHER EXPENSE',
+                'FAN REP',
+                'FAN',
+                'ELECTRIC BILL',
+                'AUTOMATIC',
+                'PAINTING',
+                'REFUND',
+                'POLICE',
+                'COMMISSION',
+                'PLUMBING',
+                'ELECTRIC',
+                'CLEANING ACCESSORIES',
+                'WATER BILL',
+                'WATER PURIFY',
+                'TANKER',
+                'BORE',
+                'MONTHLY MESS',
+                'MONTHLY BUILDING RENT',
+                'DAILY GUEST RENT',
+                'MONTHLY GUEST RENT',
+                'ION',
+                'TATA SKY',
+                'DRIANAGE CLEANING',
+
+            ]
+            item_category = [
+                'Select',
+                'COMFORT 2',
+                'SALARY',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+                'COMFORT 2',
+
+            ]
+            for i in range(len(item_name)):
+                ic = table1()
+                ic.name = item_name[i]
+                ic.item_category = item_category[i]
+                ic.created_by = 'CB '+ request.session['username']
+                import datetime
+                ic.cb_date = datetime.datetime.now()
+                ic.ub_flag = 0
+                ic.flag = 1
+                ic.save()
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'item' : table1.objects.all().filter(flag=1).order_by('-id'),
+                'msg' : 'success',
+                'category': category.objects.all().filter(flag=1).order_by('-id'),
+            }
+            messages.info(request, 'ITEM CREATED SUCCESSFULLY !!!')
+            return render(request,'branches/branch2/accounts/creater_master/items/view_all_items.html',context)
+        return render(request, 'index.html')
+
+
+
+
 def delete_item2(request,id):
     if 'username' in request.session:
         r=table1.objects.all().filter(id=id).exists()

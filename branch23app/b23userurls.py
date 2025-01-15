@@ -529,6 +529,8 @@ urlpatterns = [
     path('update_item23/<id>', accounts23.update_item23, name='update_item23'),
     path('view_all_items_delete23/',accounts23.view_all_items_delete23,name='view_all_items_delete23'),
 
+    path('regi_multiple_new_item23/', accounts23.regi_multiple_new_item23, name='regi_multiple_new_item23'),
+
     ##*****************ITEM CREATER END HERE
 
 

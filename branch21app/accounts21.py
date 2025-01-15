@@ -492,6 +492,322 @@ def regi_new_item21(request):
             return render(request,'branches/branch21/accounts/creater_master/items/view_all_items.html',context)
         return render(request, 'index.html')
 
+
+def regi_multiple_new_item21(request):
+    if 'username' in request.session:
+        item_name = request.POST.get('name')
+        item_category = request.POST.get('category')
+        ir = table1.objects.all().filter(name=item_name, flag=1).exists()
+
+        if ir == True:
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'item': table1.objects.all().filter(flag=1).order_by('-id'),
+                'msg': 'danger',
+                'category': category.objects.all().filter(flag=1).order_by('-id'),
+            }
+            messages.info(request, 'ITEM ALREADY EXISTS')
+            return render(request, 'branches/branch21/accounts/creater_master/items/view_all_items.html', context)
+        else:
+            item_name = [
+                'PRAMOD',
+                'LALITH',
+                'ZAKATH',
+                'JITHIN',
+                'TOTAL GROCERRY',
+                'VEGITABLE',
+                'CHICKEN',
+                'FISH',
+                'EGG',
+                'DOSHA RICE',
+                'IDLY RICE',
+                'STEAM RICE',
+                'BIRIYANI RICE',
+                'MAIDA',
+                'AATTA',
+                'SUGAR',
+                'TATA SKY',
+                'ION',
+                'MESS RENT',
+                'MONTHLY GUEST RENT',
+                'DAILY GUEST RENT',
+                'BORE',
+                'TANKER',
+                'WATER PURIFY',
+                'PETROL',
+                'VEHICLE MAINTANANCE',
+                'TRANSPORT CHARGE',
+                'PALM OIL',
+                'COCONUT',
+                'MILK',
+                'CURD',
+                'CLEANING ACCESSORIES',
+                'FALGUNI',
+                'APPU',
+                'SHABEER',
+                'ANKOOSH',
+                'BAVESH',
+                'CHAPPATHI',
+                'BAPPY',
+                'BALAN',
+                'ACCOUNTIG',
+                'ARIF',
+                'NASEER',
+                'CHOTU',
+                'SANTHOSH',
+                'BAPPY 1',
+                'FAN REP',
+                'FAN',
+                'WATER BILL',
+                'ELECTRIC BILL',
+                'ELECTRIC',
+                'PLUMBING',
+                'PAINTING',
+                'POLICE',
+                'AUTOMATIC',
+                'GRINDING',
+                'GLASS',
+                'GHEE',
+                'SEMIYA',
+                'PAPER',
+                'POTATO',
+                'WELDING WORK',
+                'MIXED ITEM',
+                'RAVA',
+                'MOONG',
+                'GRAM',
+                'KAABULI',
+                'GREENPIECE',
+                'FRIED GRAM',
+                'GRAMDAL',
+                'TOOR DAL',
+                'MOONG DAL',
+                'URAD DAL',
+                'BESAN',
+                'SALT POWDER',
+                'SALT CHRISTAL',
+                'TAMARIND',
+                'GUNDOOR CHILLI',
+                'CORRIANDER',
+                'JAGGERRY',
+                'BABY CASHEW',
+                'ELAKKA',
+                'CASHEW',
+                'KISMIS',
+                'LAVANG',
+                'JEERA',
+                'SAUMP',
+                'PEPPER',
+                'MUSTURD',
+                'MENTHIA',
+                'CORN FLOUR',
+                'ROSE WATER',
+                'VINEGAR',
+                'LG GATTY',
+                'LG POWDER',
+                'CLOVE',
+                'COLOUR',
+                'EXO',
+                'FRIDAY MESS',
+                'AVARAKKOTTA',
+                'IDLY COVER',
+                'REFUND',
+                'GINGER',
+                'GARLIC',
+                'CHILLY',
+                'RICE POWDER',
+                'SAJEERA',
+                'STAR',
+                'JATHIPATHRI',
+                'JATHIKKA',
+                'SOYABEEN',
+                'DASARATH',
+                'TV',
+                'ADVOCATE',
+                'LOBA',
+                'BRIGHT',
+                'OTHER EXPENSES',
+                'KAANU',
+                'ADIL',
+                'KITCHEN ACCESSORIES',
+                'CHKDU',
+                'DEEPAK',
+
+            ]
+            item_category = [
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'GROCERRY',
+                'VEGETABLE',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'GROCERRY',
+                'VEGETABLE',
+                'GROCERRY',
+                'GROCERRY',
+                'PRESIGE 1',
+                'KITCHEN SALARY',
+                'KITCHEN SALARY',
+                'KITCHEN SALARY',
+                'KITCHEN SALARY',
+                'KITCHEN SALARY',
+                'SALARY',
+                'SALARY',
+                'KITCHEN SALARY',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'KITCHEN SALARY',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'PRESIGE 1',
+                'VEGETABLE',
+                'PRESIGE 1',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'PRESIGE 1',
+                'VEGETABLE',
+                'VEGETABLE',
+                'VEGETABLE',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'GROCERRY',
+                'KITCHEN SALARY',
+                'PRESIGE 1',
+                'PRESIGE 1',
+                'GROCERRY',
+                'SALARY',
+                'PRESIGE 1',
+                'KITCHEN SALARY',
+                'SALARY',
+                'GROCERRY',
+                'PRESIGE 1',
+                'KITCHEN SALARY',
+
+            ]
+            for i in range(len(item_name)):
+                ic = table1()
+                ic.name = item_name[i]
+                ic.item_category = item_category[i]
+                ic.created_by = 'CB ' + request.session['username']
+                import datetime
+                ic.cb_date = datetime.datetime.now()
+                ic.ub_flag = 0
+                ic.flag = 1
+                ic.save()
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'item': table1.objects.all().filter(flag=1).order_by('-id'),
+                'msg': 'success',
+                'category': category.objects.all().filter(flag=1).order_by('-id'),
+            }
+            messages.info(request, 'ITEM CREATED SUCCESSFULLY !!!')
+            return render(request, 'branches/branch21/accounts/creater_master/items/view_all_items.html', context)
+        return render(request, 'index.html')
+
+
 def delete_item21(request,id):
     if 'username' in request.session:
         r=table1.objects.all().filter(id=id).exists()

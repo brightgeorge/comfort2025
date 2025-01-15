@@ -529,6 +529,8 @@ urlpatterns = [
     path('update_item32/<id>', accounts32.update_item32, name='update_item32'),
     path('view_all_items_delete32/',accounts32.view_all_items_delete32,name='view_all_items_delete32'),
 
+    path('regi_multiple_new_item32/', accounts32.regi_multiple_new_item32, name='regi_multiple_new_item32'),
+
     ##*****************ITEM CREATER END HERE
 
 

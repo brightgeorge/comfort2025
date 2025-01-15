@@ -490,6 +490,152 @@ def regi_new_item41(request):
             return render(request,'branches/branch41/accounts/creater_master/items/view_all_items.html',context)
         return render(request, 'index.html')
 
+
+def regi_multiple_new_item41(request):
+    if 'username' in request.session:
+        item_name = request.POST.get('name')
+        item_category = request.POST.get('category')
+        ir = table1.objects.all().filter(name=item_name, flag=1).exists()
+
+        if ir == True:
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'item': table1.objects.all().filter(flag=1).order_by('-id'),
+                'msg': 'danger',
+                'category': category.objects.all().filter(flag=1).order_by('-id'),
+            }
+            messages.info(request, 'ITEM ALREADY EXISTS')
+            return render(request, 'branches/branch41/accounts/creater_master/items/view_all_items.html', context)
+        else:
+            item_name = [
+                'ACCOUNTING',
+                'SANTHOSH 2',
+                'KEB',
+                'SABARANG',
+                'KONIA LIFT',
+                'ZAKATH',
+                'ASHIF',
+                'BORE',
+                'TATA SKY',
+                'ION',
+                'MONTHLY GUEST RENT',
+                'MONTHLY MESS',
+                'DAILY GUEST RENT',
+                'TANKER',
+                'WATER PURIFY',
+                'WATER BILL',
+                'DRIANAGE CLEANING',
+                'CLEANING ACCESSORIES',
+                'COMMISION',
+                'POLICE',
+                'REFUND',
+                'ELECTRIC',
+                'PLUMBING',
+                'PAINTING',
+                'AUTOMATIC',
+                'FAN REP',
+                'FAN',
+                'SPINDAL',
+                'LOCK',
+                'OTHER EXPENSES',
+                'BRIGHT',
+                'SANTHOSH',
+                'DEVINDER',
+                'MUKESH',
+                'BABA',
+                'NASEEM',
+                'AASHIF',
+
+            ]
+            item_category = [
+                'SALARY',
+                'SALARY',
+                'HAPPY HOMES',
+                'SALARY',
+                'HAPPY HOMES',
+                'SALARY',
+                'SALARY',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'HAPPY HOMES',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+                'SALARY',
+
+            ]
+            for i in range(len(item_name)):
+                ic = table1()
+                ic.name = item_name[i]
+                ic.item_category = item_category[i]
+                ic.created_by = 'CB ' + request.session['username']
+                import datetime
+                ic.cb_date = datetime.datetime.now()
+                ic.ub_flag = 0
+                ic.flag = 1
+                ic.save()
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'item': table1.objects.all().filter(flag=1).order_by('-id'),
+                'msg': 'success',
+                'category': category.objects.all().filter(flag=1).order_by('-id'),
+            }
+            messages.info(request, 'ITEM CREATED SUCCESSFULLY !!!')
+            return render(request, 'branches/branch41/accounts/creater_master/items/view_all_items.html', context)
+        return render(request, 'index.html')
+
+
 def delete_item41(request,id):
     if 'username' in request.session:
         r=table1.objects.all().filter(id=id).exists()
