@@ -543,7 +543,9 @@ urlpatterns = [
     path('update_ledger42/<id>',accounts42.update_ledger42,name='update_ledger42'),
     path('view_all_ledger_delete42/',accounts42.view_all_ledger_delete42,name='view_all_ledger_delete42'),
 
-##*****************LEDGER CREATER END HERE
+    path('regi_multiple_new_ledger42/', accounts42.regi_multiple_new_ledger42, name='regi_multiple_new_ledger42'),
+
+    ##*****************LEDGER CREATER END HERE
 
 
 ##******************ACCOUNTS_BOOK CREATER START HERE

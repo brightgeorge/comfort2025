@@ -926,6 +926,87 @@ def regi_new_ledger22(request):
         return render(request, 'index.html')
 
 
+def regi_multiple_new_ledger22(request):
+    if 'username' in request.session:
+        ledger_name = request.POST.get('ledger_name')
+        contact_person_name = request.POST.get('contact_person_name')
+        contact_person_number = request.POST.get('contact_person_number')
+        addres = request.POST.get('address')
+
+        lr = ledger.objects.all().filter(ledger_name=ledger_name, flag=1).exists()
+        if lr == False:
+
+            ledger_name = [
+
+            ]
+            contact_person_name = [
+
+            ]
+            contact_person_number = [
+
+            ]
+            addres = [
+
+            ]
+
+            for i in range(len(ledger_name)):
+                ic = ledger()
+                ic.ledger_name = ledger_name[i]
+                ic.contact_person_name = contact_person_name[i]
+                ic.contact_person_mob = contact_person_number[i]
+                ic.address = addres[i]
+                ic.created_by = 'CB ' + request.session['username']
+                import datetime
+                ic.cb_date = datetime.datetime.now()
+                ic.ub_flag = 0
+                ic.flag = 1
+                ic.save()
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'ledger': ledger.objects.all().filter(flag=1).order_by('-id'),
+                'msg': 'success'
+            }
+            messages.info(request, 'LEDGER CREATED SUCCESSFULLY')
+            return render(request, 'branches/branch22/accounts/creater_master/ledger/view_all_ledger.html', context)
+        else:
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'ledger': ledger.objects.all().filter(flag=1).order_by('-id'),
+                'msg': 'danger'
+            }
+            messages.info(request, 'LEDGER ALREADY EXISTS')
+            return render(request, 'branches/branch22/accounts/creater_master/ledger/view_all_ledger.html', context)
+        return render(request, 'index.html')
+
+
 def delete_ledger22(request,id):
     if 'username' in request.session:
         r=ledger.objects.all().filter(id=id).exists()
