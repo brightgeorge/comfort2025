@@ -1246,6 +1246,76 @@ def regi_new_accounts_book7(request):
 
 
 
+def regi_multiple_new_accounts_book7(request):
+    if 'username' in request.session:
+        accounts_book_name = request.POST.get('accounts_book_name')
+
+        ar=accounts_book.objects.all().filter(accounts_book_name=accounts_book_name,flag=1).exists()
+
+        if ar == True:
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'accounts_book': accounts_book.objects.all().filter(flag=1).order_by('-id'),
+                'msg' : 'danger'
+            }
+            messages.info(request,'ACCOUNTS BOOK Already Exists')
+            return render(request, 'branches/branch7/accounts/creater_master/accounts_book/view_all_accounts_book.html',context)
+        else:
+            accounts_book_name = [
+                'SALARY',
+                'PURCHASE',
+                'RENT',
+
+            ]
+            for i in range(len(accounts_book_name)):
+                ic = accounts_book()
+                ic.accounts_book_name = accounts_book_name[i]
+                ic.created_by = 'CB ' + request.session['username']
+                import datetime
+                ic.cb_date = datetime.datetime.now()
+                ic.ub_flag = 0
+                ic.flag = 1
+                ic.save()
+
+            us = request.session['username']
+            bgs = background_color.objects.all().filter(username=us)
+            bg = background_color.objects.all().filter(username=us).exists()
+            a = []
+            if bg == True:
+                a.append(us)
+            else:
+                a.append('f')
+
+            context = {
+                'bg': bgs,
+                'us': us,
+                'th_us': a[0],
+                'name': us,
+
+                'accounts_book' : accounts_book.objects.all().filter(flag=1).order_by('-id'),
+                'msg': 'success'
+            }
+            messages.info(request, 'ACCOUNTS BOOK Created Successfully')
+            return render(request,'branches/branch7/accounts/creater_master/accounts_book/view_all_accounts_book.html',context)
+        return render(request, 'index.html')
+
+
+
+
 def delete_accounts_book7(request,id):
     if 'username' in request.session:
         r=accounts_book.objects.all().filter(id=id).exists()

@@ -557,6 +557,8 @@ urlpatterns = [
     path('delete_accounts_book1/<id>',accounts1.delete_accounts_book1,name='delete_accounts_book1'),
     path('view_all_accounts_book_delete1/',accounts1.view_all_accounts_book_delete1,name='view_all_accounts_book_delete1'),
 
+    path('regi_multiple_new_accounts_book1/',accounts1.regi_multiple_new_accounts_book1,name='regi_multiple_new_accounts_book1'),
+
 ##*****************ACCOUNTS_BOOK CREATER END HERE
 
 
