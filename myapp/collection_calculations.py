@@ -227,9 +227,153 @@ def total_collection_details(request):
 
     ###DISCOUNT CALCULATIONS END HERE ##########
 
+    ###TOTAL COLLATABLE AMOUNT START HERE ##########
+
+    total_collatable_amount = total_collection + total_advance_amount - total_discount_amount
+    comfort_total_collatable_amount = comfort_total_collections + comfort_advance - comfort_discount
+    prestige_total_collatable_amount = prestige_total_collections + prestige_advance - prestige_discount
+    perfect_total_collatable_amount = perfect_total_collections + perfect_advance - perfect_discount
+    happy_homes_total_collatable_amount = happy_homes_total_collections + happy_homes_advance - happy_homes_discount
+    comfort_ladies_total_collatable_amount = comfort_ladies_total_collections + comfort_ladies_advance - comfort_ladies_discount
+
+    ###TOTAL COLLATABLE AMOUNT END HERE ###########
+
+    ###TOTAL COLLECTED AMOUNT START HERE ###########
+
+    comfort_total_collected_amount1 = branch1app.admin_dashboard_calculations_br1.total_collected_amount()
+    comfort_total_collected_amount2 = branch2app.admin_dashboard_calculations_br2.total_collected_amount()
+    comfort_total_collected_amount3 = branch3app.admin_dashboard_calculations_br3.total_collected_amount()
+    comfort_total_collected_amount4 = branch4app.admin_dashboard_calculations_br4.total_collected_amount()
+    comfort_total_collected_amount5 = branch5app.admin_dashboard_calculations_br5.total_collected_amount()
+    comfort_total_collected_amount6 = branch6app.admin_dashboard_calculations_br6.total_collected_amount()
+    comfort_total_collected_amount7 = branch7app.admin_dashboard_calculations_br7.total_collected_amount()
+
+    prestige_total_collected_amount1 = branch21app.admin_dashboard_calculations_br21.total_collected_amount()
+    prestige_total_collected_amount2 = branch22app.admin_dashboard_calculations_br22.total_collected_amount()
+    prestige_total_collected_amount3 = branch23app.admin_dashboard_calculations_br23.total_collected_amount()
+    prestige_total_collected_amount4 = branch24app.admin_dashboard_calculations_br24.total_collected_amount()
+
+    perfect_total_collected_amount1 = branch31app.admin_dashboard_calculations_br31.total_collected_amount()
+    perfect_total_collected_amount2 = branch32app.admin_dashboard_calculations_br32.total_collected_amount()
+    perfect_total_collected_amount3 = branch33app.admin_dashboard_calculations_br33.total_collected_amount()
+    perfect_total_collected_amount4 = branch34app.admin_dashboard_calculations_br34.total_collected_amount()
+
+    happy_homes_total_collected_amount1 = branch41app.admin_dashboard_calculations_br41.total_collected_amount()
+    happy_homes_total_collected_amount2 = branch42app.admin_dashboard_calculations_br42.total_collected_amount()
+
+    comfort_ladies_total_collected_amount1 = branch51app.admin_dashboard_calculations_br51.total_collected_amount()
+    comfort_ladies_total_collected_amount2 = branch52app.admin_dashboard_calculations_br52.total_collected_amount()
+
+    comfort_total_collected_amount = []
+    comfort_total_collected_amount.append(comfort_total_collected_amount1)
+    comfort_total_collected_amount.append(comfort_total_collected_amount2)
+    comfort_total_collected_amount.append(comfort_total_collected_amount3)
+    comfort_total_collected_amount.append(comfort_total_collected_amount4)
+    comfort_total_collected_amount.append(comfort_total_collected_amount5)
+    comfort_total_collected_amount.append(comfort_total_collected_amount6)
+    comfort_total_collected_amount.append(comfort_total_collected_amount7)
+
+    prestige_total_collected_amount = []
+    prestige_total_collected_amount.append(prestige_total_collected_amount1)
+    prestige_total_collected_amount.append(prestige_total_collected_amount2)
+    prestige_total_collected_amount.append(prestige_total_collected_amount3)
+    prestige_total_collected_amount.append(prestige_total_collected_amount4)
+
+    perfect_total_collected_amount = []
+    perfect_total_collected_amount.append(perfect_total_collected_amount1)
+    perfect_total_collected_amount.append(perfect_total_collected_amount2)
+    perfect_total_collected_amount.append(perfect_total_collected_amount3)
+    perfect_total_collected_amount.append(perfect_total_collected_amount4)
+
+    happy_homes_total_collected_amount = []
+    happy_homes_total_collected_amount.append(happy_homes_total_collected_amount1)
+    happy_homes_total_collected_amount.append(happy_homes_total_collected_amount2)
+
+    comfort_ladies_total_collected_amount = []
+    comfort_ladies_total_collected_amount.append(comfort_ladies_total_collected_amount1)
+    comfort_ladies_total_collected_amount.append(comfort_ladies_total_collected_amount2)
+
+    comfort_total_collected_amount = sum(comfort_total_collected_amount)
+    prestige_total_collected_amount = sum(prestige_total_collected_amount)
+    perfect_total_collected_amount = sum(perfect_total_collected_amount)
+    happy_homes_total_collected_amount = sum(happy_homes_total_collected_amount)
+    comfort_ladies_total_collected_amount = sum(comfort_ladies_total_collected_amount)
+
+    total_collected_amount = comfort_total_collected_amount + prestige_total_collected_amount + perfect_total_collected_amount + happy_homes_total_collected_amount + comfort_ladies_total_collected_amount
+
+    print('this is total branch total_collected_amount sum', total_collected_amount)
+
+    ###TOTAL COLLECTED AMOUNT END HERE ############
+
+    ###TOTAL DUE AMOUNT CALCULATIONS START HERE ############
+
+    comfort_due_amount1 = branch1app.admin_dashboard_calculations_br1.total_due()
+    comfort_due_amount2 = branch2app.admin_dashboard_calculations_br2.total_due()
+    comfort_due_amount3 = branch3app.admin_dashboard_calculations_br3.total_due()
+    comfort_due_amount4 = branch4app.admin_dashboard_calculations_br4.total_due()
+    comfort_due_amount5 = branch5app.admin_dashboard_calculations_br5.total_due()
+    comfort_due_amount6 = branch6app.admin_dashboard_calculations_br6.total_due()
+    comfort_due_amount7 = branch7app.admin_dashboard_calculations_br7.total_due()
+
+    prestige_due_amount1 = branch21app.admin_dashboard_calculations_br21.total_due()
+    prestige_due_amount2 = branch22app.admin_dashboard_calculations_br22.total_due()
+    prestige_due_amount3 = branch23app.admin_dashboard_calculations_br23.total_due()
+    prestige_due_amount4 = branch24app.admin_dashboard_calculations_br24.total_due()
+
+    perfect_due_amount1 = branch31app.admin_dashboard_calculations_br31.total_due()
+    perfect_due_amount2 = branch32app.admin_dashboard_calculations_br32.total_due()
+    perfect_due_amount3 = branch33app.admin_dashboard_calculations_br33.total_due()
+    perfect_due_amount4 = branch34app.admin_dashboard_calculations_br34.total_due()
+
+    happy_homes_due_amount1 = branch41app.admin_dashboard_calculations_br41.total_due()
+    happy_homes_due_amount2 = branch42app.admin_dashboard_calculations_br42.total_due()
+
+    comfort_ladies_due_amount1 = branch51app.admin_dashboard_calculations_br51.total_due()
+    comfort_ladies_due_amount2 = branch52app.admin_dashboard_calculations_br52.total_due()
+
+    comfort_due_amount = []
+    comfort_due_amount.append(comfort_due_amount1)
+    comfort_due_amount.append(comfort_due_amount2)
+    comfort_due_amount.append(comfort_due_amount3)
+    comfort_due_amount.append(comfort_due_amount4)
+    comfort_due_amount.append(comfort_due_amount5)
+    comfort_due_amount.append(comfort_due_amount6)
+    comfort_due_amount.append(comfort_due_amount7)
+
+    prestige_due_amount = []
+    prestige_due_amount.append(prestige_due_amount1)
+    prestige_due_amount.append(prestige_due_amount2)
+    prestige_due_amount.append(prestige_due_amount3)
+    prestige_due_amount.append(prestige_due_amount4)
+
+    perfect_due_amount = []
+    perfect_due_amount.append(perfect_due_amount1)
+    perfect_due_amount.append(perfect_due_amount2)
+    perfect_due_amount.append(perfect_due_amount3)
+    perfect_due_amount.append(perfect_due_amount4)
+
+    happy_homes_due_amount = []
+    happy_homes_due_amount.append(happy_homes_due_amount1)
+    happy_homes_due_amount.append(happy_homes_due_amount2)
+
+    comfort_ladies_due_amount = []
+    comfort_ladies_due_amount.append(comfort_ladies_due_amount1)
+    comfort_ladies_due_amount.append(comfort_ladies_due_amount2)
+
+    comfort_due_amount = sum(comfort_due_amount)
+    prestige_due_amount = sum(prestige_due_amount)
+    perfect_due_amount = sum(perfect_due_amount)
+    happy_homes_due_amount = sum(happy_homes_due_amount)
+    comfort_ladies_due_amount = sum(comfort_ladies_due_amount)
+
+    total_due_amount = comfort_due_amount + prestige_due_amount + perfect_due_amount + happy_homes_due_amount + comfort_ladies_due_amount
+
+    ###TOTAL DUE AMOUNT CALCULATIONS END HERE ########
+
+
 
     context = {
-        'total_collection' : total_collection,
+        'total_collection': total_collection,
         'comfort_total_collection': comfort_total_collections,
         'prestige_total_collection': prestige_total_collections,
         'perfect_total_collection': perfect_total_collections,
@@ -249,6 +393,27 @@ def total_collection_details(request):
         'perfect_discount': perfect_discount,
         'happy_homes_discount': happy_homes_discount,
         'comfort_ladies_discount': comfort_ladies_discount,
+
+        'total_collatable_amount': total_collatable_amount,
+        'comfort_total_collatable_amount': comfort_total_collatable_amount,
+        'prestige_total_collatable_amount': prestige_total_collatable_amount,
+        'perfect_total_collatable_amount': perfect_total_collatable_amount,
+        'happy_homes_total_collatable_amount': happy_homes_total_collatable_amount,
+        'comfort_ladies_total_collatable_amount': comfort_ladies_total_collatable_amount,
+
+        'total_collected_amount': total_collected_amount,
+        'comfort_total_collected_amount': comfort_total_collected_amount,
+        'prestige_total_collected_amount': prestige_total_collected_amount,
+        'perfect_total_collected_amount': perfect_total_collected_amount,
+        'happy_homes_total_collected_amount': happy_homes_total_collected_amount,
+        'comfort_ladies_total_collected_amount': comfort_ladies_total_collected_amount,
+
+        'total_due_amount': total_due_amount,
+        'comfort_due_amount': comfort_due_amount,
+        'prestige_due_amount': prestige_due_amount,
+        'perfect_due_amount': perfect_due_amount,
+        'happy_homes_due_amount': happy_homes_due_amount,
+        'comfort_ladies_due_amount': comfort_ladies_due_amount,
 
 
     }
