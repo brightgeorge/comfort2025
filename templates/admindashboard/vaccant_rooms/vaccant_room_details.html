@@ -59,12 +59,6 @@
         </a>
       </li>
 
-       <li>
-        <a href="{% url 'vaccant_room_details' %}">
-          <i class="zmdi zmdi-format-list-bulleted"></i> <span> Vaccant Rooms </span>
-        </a>
-      </li>
-
         <li>
         <a href="{% url 'select_branch' %}">
           <i class="zmdi zmdi-format-list-bulleted"></i> <span>Branches</span>
@@ -168,14 +162,30 @@
 
   <!--Start Dashboard Content-->
 
+
+        <div class="card mt-3">
+    <div class="card-content">
+        <p style="text-align:center;"><span style="color:white;font-weight:bold;font-size:25px;">
+        TOTAL VACANT ROOM : {{total_guest}}<hr>
+        </span></p>
+    </div>
+        </div>
+
+
+
+
+
 	<div class="card mt-3">
     <div class="card-content">
+        <span style="color:white;font-weight:bold;font-size:25px;">
+        TOTAL COMFORT VACANT ROOM : {{total_comfort}}<hr>
+        </span>
         <div class="row row-group m-0">
 
-            <div class="col-12 col-lg-6 col-xl-2 border-light">
+            <div class="col-3 col-lg-3 col-xl-1 border-light">
                 <a href="{% url 'branch1_dashboard1' %}">
                 <div class="card-body" style="background-color:orange;">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{comfort.0}} <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
@@ -183,10 +193,10 @@
                 </div></a>
             </div>
 
-            <div class="col-12 col-lg-6 col-xl-2 border-light">
+            <div class="col-3 col-lg-3 col-xl-1 border-light">
                 <a href="{% url 'branch1_dashboard2' %}">
                 <div class="card-body" style="background-color:orange;">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-view-dashboard"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{comfort.1}} <span class="float-right"><i class="zmdi zmdi-view-dashboard"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
@@ -194,10 +204,10 @@
                 </div></a>
             </div>
 
-            <div class="col-12 col-lg-6 col-xl-2 border-light">
+            <div class="col-3 col-lg-3 col-xl-1 border-light">
                 <a href="{% url 'branch1_dashboard3' %}">
                 <div class="card-body" style="background-color:orange;">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{comfort.2}} <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
@@ -205,10 +215,10 @@
                 </div></a>
             </div>
 
-                        <div class="col-12 col-lg-6 col-xl-2 border-light">
+                        <div class="col-3 col-lg-3 col-xl-1 border-light">
                 <a href="{% url 'branch1_dashboard4' %}">
                 <div class="card-body" style="background-color:red;">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{comfort.3}} <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
@@ -219,10 +229,10 @@
 
 
 
-            <div class="col-12 col-lg-6 col-xl-2 border-light">
+            <div class="col-3 col-lg-3 col-xl-1 border-light">
                 <a href="{% url 'branch1_dashboard5' %}">
                 <div class="card-body" style="background-color:red">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-view-dashboard"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{comfort.4}} <span class="float-right"><i class="zmdi zmdi-view-dashboard"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
@@ -231,14 +241,25 @@
             </div>
 
 
-            <div class="col-12 col-lg-6 col-xl-2 border-light">
+            <div class="col-3 col-lg-3 col-xl-1 border-light">
                 <a href="{% url 'branch1_dashboard6' %}">
                 <div class="card-body" style="background-color:red">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-view-dashboard"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{comfort.5}} <span class="float-right"><i class="zmdi zmdi-view-dashboard"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
                   <p class="mb-0 text-white small-font">COMFORT BR 5 <span class="float-right"><i class="zmdi zmdi-long-arrow-up"></i></span></p>
+                </div></a>
+            </div>
+
+                                    <div class="col-3 col-lg-3 col-xl-1 border-light">
+                <a href="{% url 'branch1_dashboard7' %}">
+                <div class="card-body" style="background-color:red;">
+                  <h5 class="text-white mb-0"> {{comfort.6}} <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
+                    <div class="progress my-3" style="height:3px;">
+                       <div class="progress-bar" style="width:100%"></div>
+                    </div>
+                  <p class="mb-0 text-white small-font">COMFORT BR 6 </p>
                 </div></a>
             </div>
 
@@ -250,15 +271,18 @@
 
  <div class="card mt-3">
     <div class="card-content">
+        <span style="color:white;font-weight:bold;font-size:25px;">
+        TOTAL PRESTIGE VACANT ROOM : {{total_prestige}}<hr>
+        </span>
         <div class="row row-group m-0">
 
 
 
 
-            <div class="col-12 col-lg-6 col-xl-2 border-light">
+            <div class="col-3 col-lg-3 col-xl-2 border-light">
                 <a href="{% url 'branch1_dashboard21' %}">
                 <div class="card-body" style="background-color:green">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{prestige.0}} <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
@@ -266,10 +290,10 @@
                 </div>
             </div>
 
-             <div class="col-12 col-lg-6 col-xl-2 border-light">
+             <div class="col-3 col-lg-3 col-xl-2 border-light">
                 <a href="{% url 'branch1_dashboard22' %}">
                 <div class="card-body" style="background-color:green">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{prestige.1}} <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
@@ -277,10 +301,10 @@
                 </div></a>
             </div>
 
-                <div class="col-12 col-lg-6 col-xl-2 border-light">
+                <div class="col-3 col-lg-3 col-xl-2 border-light">
                 <a href="{% url 'branch1_dashboard23' %}">
                 <div class="card-body" style="background-color:green">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-view-dashboard"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{prestige.2}} <span class="float-right"><i class="zmdi zmdi-view-dashboard"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
@@ -289,10 +313,10 @@
             </div>
 
 
-                        <div class="col-12 col-lg-6 col-xl-2 border-light">
+                        <div class="col-3 col-lg-3 col-xl-2 border-light">
                 <a href="{% url 'branch1_dashboard24' %}">
                 <div class="card-body" style="background-color:green">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{prestige.3}} <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
@@ -300,19 +324,21 @@
                 </div></a>
             </div>
 
-                        <div class="col-12 col-lg-6 col-xl-2 border-light">
-                <a href="{% url 'branch1_dashboard7' %}">
-                <div class="card-body" style="background-color:red;">
+
+            <div class="col-3 col-lg-3 col-xl-2 border-light">
+                <a href="#">
+                <div class="card-body" style="background-color:black">
                   <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
-                  <p class="mb-0 text-white small-font">COMFORT BR 6 </p>
+                  <p class="mb-0 text-white small-font"> Nill <span class="float-right"> <i class="zmdi zmdi-long-arrow-up"></i></span></p>
                 </div></a>
             </div>
 
 
-                                    <div class="col-12 col-lg-6 col-xl-2 border-light">
+
+            <div class="col-3 col-lg-3 col-xl-2 border-light">
                 <a href="#">
                 <div class="card-body" style="background-color:black">
                   <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
@@ -331,6 +357,9 @@
 
  <div class="card mt-3">
     <div class="card-content">
+        <span style="color:white;font-weight:bold;font-size:25px;">
+        TOTAL PERFECT VACANT ROOM : {{total_perfect}}<hr>
+        </span>
         <div class="row row-group m-0">
 
 
@@ -338,10 +367,10 @@
 
 
 
-             <div class="col-12 col-lg-6 col-xl-2 border-light">
+             <div class="col-3 col-lg-3 col-xl-2 border-light">
                 <a href="{% url 'branch1_dashboard31' %}">
                 <div class="card-body" style="background-color:purple">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-view-dashboard"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{perfect.0}} <span class="float-right"><i class="zmdi zmdi-view-dashboard"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
@@ -349,10 +378,10 @@
                 </div></a>
             </div>
 
-                        <div class="col-12 col-lg-6 col-xl-2 border-light">
+                        <div class="col-3 col-lg-3 col-xl-2 border-light">
                 <a href="{% url 'branch1_dashboard32' %}">
                 <div class="card-body" style="background-color:purple">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{perfect.1}} <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
@@ -362,10 +391,10 @@
 
 
 
-                                    <div class="col-12 col-lg-6 col-xl-2 border-light">
+                                    <div class="col-3 col-lg-3 col-xl-2 border-light">
                 <a href="{% url 'branch1_dashboard33' %}">
                 <div class="card-body" style="background-color:purple">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{perfect.2}} <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
@@ -374,10 +403,10 @@
             </div>
 
 
-                     <div class="col-12 col-lg-6 col-xl-2 border-light">
+                     <div class="col-3 col-lg-3 col-xl-2 border-light">
                 <a href="{% url 'branch1_dashboard34' %}">
                 <div class="card-body" style="background-color:purple">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{perfect.3}} <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
@@ -386,28 +415,33 @@
             </div>
 
 
-                         <div class="col-12 col-lg-6 col-xl-2 border-light">
-                <a href="{% url 'branch1_dashboard41' %}">
-                <div class="card-body" style="background-color:coral">
+
+
+            <div class="col-3 col-lg-3 col-xl-2 border-light">
+                <a href="#">
+                <div class="card-body" style="background-color:black">
                   <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
-                  <p class="mb-0 text-white small-font">HAPPY HOMES 1 <span class="float-right"> <i class="zmdi zmdi-long-arrow-up"></i></span></p>
+                  <p class="mb-0 text-white small-font"> Nill <span class="float-right"> <i class="zmdi zmdi-long-arrow-up"></i></span></p>
                 </div></a>
             </div>
 
 
-                                    <div class="col-12 col-lg-6 col-xl-2 border-light">
-                <a href="{% url 'branch1_dashboard42' %}">
-                <div class="card-body" style="background-color:coral">
+
+            <div class="col-3 col-lg-3 col-xl-2 border-light">
+                <a href="#">
+                <div class="card-body" style="background-color:black">
                   <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
-                  <p class="mb-0 text-white small-font"> HAPPY HOMES 2 <span class="float-right"> <i class="zmdi zmdi-long-arrow-up"></i></span></p>
+                  <p class="mb-0 text-white small-font"> Nill <span class="float-right"> <i class="zmdi zmdi-long-arrow-up"></i></span></p>
                 </div></a>
             </div>
+
+
 
 
 
@@ -421,8 +455,19 @@
 
 
 
+
+
+
+
+
+
+
+
          <div class="card mt-3">
     <div class="card-content">
+        <span style="color:white;font-weight:bold;font-size:25px;">
+        TOTAL HAPPY HOMES VACANT ROOM : {{total_happy_homes}}<hr>
+        </span>
         <div class="row row-group m-0">
 
 
@@ -431,10 +476,71 @@
 
 
 
-                        <div class="col-12 col-lg-6 col-xl-2 border-light">
+
+                         <div class="col-3 col-lg-3 col-xl-2 border-light">
+                <a href="{% url 'branch1_dashboard41' %}">
+                <div class="card-body" style="background-color:coral">
+                  <h5 class="text-white mb-0"> {{happy_homes.0}} <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
+                    <div class="progress my-3" style="height:3px;">
+                       <div class="progress-bar" style="width:100%"></div>
+                    </div>
+                  <p class="mb-0 text-white small-font">HAPPY HOMES 1 <span class="float-right"> <i class="zmdi zmdi-long-arrow-up"></i></span></p>
+                </div></a>
+            </div>
+
+
+                                    <div class="col-3 col-lg-3 col-xl-2 border-light">
+                <a href="{% url 'branch1_dashboard42' %}">
+                <div class="card-body" style="background-color:coral">
+                  <h5 class="text-white mb-0"> {{happy_homes.1}} <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
+                    <div class="progress my-3" style="height:3px;">
+                       <div class="progress-bar" style="width:100%"></div>
+                    </div>
+                  <p class="mb-0 text-white small-font"> HAPPY HOMES 2 <span class="float-right"> <i class="zmdi zmdi-long-arrow-up"></i></span></p>
+                </div></a>
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         <div class="card mt-3">
+    <div class="card-content">
+        <span style="color:white;font-weight:bold;font-size:25px;">
+        TOTAL COMFORT LADIES VACANT ROOM : {{total_comfort_ladies}}<hr>
+        </span>
+        <div class="row row-group m-0">
+
+
+
+
+
+
+
+                        <div class="col-3 col-lg-3 col-xl-2 border-light">
                 <a href="{% url 'branch1_dashboard51' %}">
                 <div class="card-body" style="background-color:#FFC0CB">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{comfort_ladies.0}} <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
@@ -442,10 +548,10 @@
                 </div></a>
             </div>
 
-                                    <div class="col-12 col-lg-6 col-xl-2 border-light">
+                                    <div class="col-3 col-lg-3 col-xl-2 border-light">
                 <a href="{% url 'branch1_dashboard52' %}">
                 <div class="card-body" style="background-color:#FFC0CB">
-                  <h5 class="text-white mb-0"> GO HOME >> <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
+                  <h5 class="text-white mb-0"> {{comfort_ladies.1}} <span class="float-right"><i class="zmdi zmdi-face"></i></span></h5>
                     <div class="progress my-3" style="height:3px;">
                        <div class="progress-bar" style="width:100%"></div>
                     </div>
