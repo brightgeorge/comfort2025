@@ -94,6 +94,140 @@ def total_collection_details(request):
 
     total_collection = comfort_total_collections + prestige_total_collections + perfect_total_collections + happy_homes_total_collections + comfort_ladies_total_collections
     print('this is total branch total_collection sum',total_collection)
+
+    ###ADVANCE CALCULATIONS START HERE ##########
+
+    comfort_advance1 = branch1app.admin_dashboard_calculations_br1.total_collection_advance()
+    comfort_advance2 = branch2app.admin_dashboard_calculations_br2.total_collection_advance()
+    comfort_advance3 = branch3app.admin_dashboard_calculations_br3.total_collection_advance()
+    comfort_advance4 = branch4app.admin_dashboard_calculations_br4.total_collection_advance()
+    comfort_advance5 = branch5app.admin_dashboard_calculations_br5.total_collection_advance()
+    comfort_advance6 = branch6app.admin_dashboard_calculations_br6.total_collection_advance()
+    comfort_advance7 = branch7app.admin_dashboard_calculations_br7.total_collection_advance()
+
+    prestige_advance1 = branch21app.admin_dashboard_calculations_br21.total_collection_advance()
+    prestige_advance2 = branch22app.admin_dashboard_calculations_br22.total_collection_advance()
+    prestige_advance3 = branch23app.admin_dashboard_calculations_br23.total_collection_advance()
+    prestige_advance4 = branch24app.admin_dashboard_calculations_br24.total_collection_advance()
+
+    perfect_advance1 = branch31app.admin_dashboard_calculations_br31.total_collection_advance()
+    perfect_advance2 = branch32app.admin_dashboard_calculations_br32.total_collection_advance()
+    perfect_advance3 = branch33app.admin_dashboard_calculations_br33.total_collection_advance()
+    perfect_advance4 = branch34app.admin_dashboard_calculations_br34.total_collection_advance()
+
+    happy_homes_advance1 = branch41app.admin_dashboard_calculations_br41.total_collection_advance()
+    happy_homes_advance2 = branch42app.admin_dashboard_calculations_br42.total_collection_advance()
+
+    comfort_ladies_advance1 = branch51app.admin_dashboard_calculations_br51.total_collection_advance()
+    comfort_ladies_advance2 = branch52app.admin_dashboard_calculations_br52.total_collection_advance()
+
+    comfort_advance = []
+    comfort_advance.append(comfort_advance1)
+    comfort_advance.append(comfort_advance2)
+    comfort_advance.append(comfort_advance3)
+    comfort_advance.append(comfort_advance4)
+    comfort_advance.append(comfort_advance5)
+    comfort_advance.append(comfort_advance6)
+    comfort_advance.append(comfort_advance7)
+
+    prestige_advance = []
+    prestige_advance.append(prestige_advance1)
+    prestige_advance.append(prestige_advance2)
+    prestige_advance.append(prestige_advance3)
+    prestige_advance.append(prestige_advance4)
+
+    perfect_advance = []
+    perfect_advance.append(perfect_advance1)
+    perfect_advance.append(perfect_advance2)
+    perfect_advance.append(perfect_advance3)
+    perfect_advance.append(perfect_advance4)
+
+    happy_homes_advance = []
+    happy_homes_advance.append(happy_homes_advance1)
+    happy_homes_advance.append(happy_homes_advance2)
+
+    comfort_ladies_advance = []
+    comfort_ladies_advance.append(comfort_ladies_advance1)
+    comfort_ladies_advance.append(comfort_ladies_advance2)
+
+    comfort_advance = sum(comfort_advance)
+    prestige_advance = sum(prestige_advance)
+    perfect_advance = sum(perfect_advance)
+    happy_homes_advance = sum(happy_homes_advance)
+    comfort_ladies_advance = sum(comfort_ladies_advance)
+    total_advance_amount = comfort_advance + prestige_advance + perfect_advance + happy_homes_advance + comfort_ladies_advance
+    print('this is total branch total_advance_amount sum', total_advance_amount)
+
+
+    ###ADVANCE CALCULATIONS END HERE ##########
+
+    ###DISCOUNT CALCULATIONS START HERE #########
+
+    comfort_discount1 = branch1app.admin_dashboard_calculations_br1.total_discount()
+    comfort_discount2 = branch2app.admin_dashboard_calculations_br2.total_discount()
+    comfort_discount3 = branch3app.admin_dashboard_calculations_br3.total_discount()
+    comfort_discount4 = branch4app.admin_dashboard_calculations_br4.total_discount()
+    comfort_discount5 = branch5app.admin_dashboard_calculations_br5.total_discount()
+    comfort_discount6 = branch6app.admin_dashboard_calculations_br6.total_discount()
+    comfort_discount7 = branch7app.admin_dashboard_calculations_br7.total_discount()
+
+    prestige_discount1 = branch21app.admin_dashboard_calculations_br21.total_discount()
+    prestige_discount2 = branch22app.admin_dashboard_calculations_br22.total_discount()
+    prestige_discount3 = branch23app.admin_dashboard_calculations_br23.total_discount()
+    prestige_discount4 = branch24app.admin_dashboard_calculations_br24.total_discount()
+
+    perfect_discount1 = branch31app.admin_dashboard_calculations_br31.total_discount()
+    perfect_discount2 = branch32app.admin_dashboard_calculations_br32.total_discount()
+    perfect_discount3 = branch33app.admin_dashboard_calculations_br33.total_discount()
+    perfect_discount4 = branch34app.admin_dashboard_calculations_br34.total_discount()
+
+    happy_homes_discount1 = branch41app.admin_dashboard_calculations_br41.total_discount()
+    happy_homes_discount2 = branch42app.admin_dashboard_calculations_br42.total_discount()
+
+    comfort_ladies_discount1 = branch51app.admin_dashboard_calculations_br51.total_discount()
+    comfort_ladies_discount2 = branch52app.admin_dashboard_calculations_br52.total_discount()
+
+    comfort_discount = []
+    comfort_discount.append(comfort_discount1)
+    comfort_discount.append(comfort_discount2)
+    comfort_discount.append(comfort_discount3)
+    comfort_discount.append(comfort_discount4)
+    comfort_discount.append(comfort_discount5)
+    comfort_discount.append(comfort_discount6)
+    comfort_discount.append(comfort_discount7)
+
+    prestige_discount = []
+    prestige_discount.append(prestige_discount1)
+    prestige_discount.append(prestige_discount2)
+    prestige_discount.append(prestige_discount3)
+    prestige_discount.append(prestige_discount4)
+
+    perfect_discount = []
+    perfect_discount.append(perfect_discount1)
+    perfect_discount.append(perfect_discount2)
+    perfect_discount.append(perfect_discount3)
+    perfect_discount.append(perfect_discount4)
+
+    happy_homes_discount = []
+    happy_homes_discount.append(happy_homes_discount1)
+    happy_homes_discount.append(happy_homes_discount2)
+
+    comfort_ladies_discount = []
+    comfort_ladies_discount.append(comfort_ladies_discount1)
+    comfort_ladies_discount.append(comfort_ladies_discount1)
+
+    comfort_discount = sum(comfort_discount)
+    prestige_discount = sum(prestige_discount)
+    perfect_discount = sum(perfect_discount)
+    happy_homes_discount = sum(happy_homes_discount)
+    comfort_ladies_discount = sum(comfort_ladies_discount)
+
+    total_discount_amount = comfort_discount + prestige_discount + perfect_discount + happy_homes_discount + comfort_ladies_discount
+    print('this is total branch total_discount_amount sum', total_discount_amount)
+
+    ###DISCOUNT CALCULATIONS END HERE ##########
+
+
     context = {
         'total_collection' : total_collection,
         'comfort_total_collection': comfort_total_collections,
@@ -102,9 +236,24 @@ def total_collection_details(request):
         'happy_homes_total_collection': happy_homes_total_collections,
         'comfort_ladies_total_collection': comfort_ladies_total_collections,
 
+        'total_advance_amount': total_advance_amount,
+        'comfort_advance': comfort_advance,
+        'prestige_advance': prestige_advance,
+        'perfect_advance': perfect_advance,
+        'happy_homes_advance': happy_homes_advance,
+        'comfort_ladies_advance': comfort_ladies_advance,
+
+        'total_discount_amount': total_discount_amount,
+        'comfort_discount': comfort_discount,
+        'prestige_discount': prestige_discount,
+        'perfect_discount': perfect_discount,
+        'happy_homes_discount': happy_homes_discount,
+        'comfort_ladies_discount': comfort_ladies_discount,
+
+
     }
     return render(request,'admindashboard/total_collection_calculations/total_collection_calculations_details.html',context)
-'''
+
 def total_advance():
     a1 = admin_dashboard_calculations_br1.total_collection_advance()
     a2 = branch2app.admin_dashboard_calculations_br2.total_collection_advance()
@@ -592,7 +741,7 @@ def branchwise_total_collection(request):
     return render(request,'admindashboard/admin_dashboard_reports/branchwise_total_collection.html', context)
 
 
-'''
+
 
 
 ######TOTAL COLLECTION END HERE
