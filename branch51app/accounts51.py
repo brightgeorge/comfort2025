@@ -3387,9 +3387,9 @@ def monthly_detailed_daily_in_exp_items_report51(request,mo):
             'expense_14': r_expense_14,
             'balance_14': r_balance_14,
 
-            'income_51': r_income_51,
-            'expense_51': r_expense_51,
-            'balance_51': r_balance_51,
+            'income_15': r_income_15,
+            'expense_15': r_expense_15,
+            'balance_15': r_balance_15,
 
             'income_16': r_income_16,
             'expense_16': r_expense_16,
@@ -3990,9 +3990,9 @@ def single_monthly_daily_in_exp_items_report51(request,mo):
             'expense_14': r_expense_14,
             'balance_14': r_balance_14,
 
-            'income_51': r_income_51,
-            'expense_51': r_expense_51,
-            'balance_51': r_balance_51,
+            'income_15': r_income_15,
+            'expense_15': r_expense_15,
+            'balance_15': r_balance_15,
 
             'income_16': r_income_16,
             'expense_16': r_expense_16,
