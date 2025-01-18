@@ -2036,7 +2036,7 @@ def daily_category_wise5(request):
 
             dal = []
             dal.append(dl[8])
-            dal.append(dl[5])
+            dal.append(dl[9])
             day = ''.join(dal)
 
             r_dates = dates
@@ -2224,7 +2224,7 @@ def daily_detailed5(request):
 
             dal = []
             dal.append(dl[8])
-            dal.append(dl[5])
+            dal.append(dl[9])
             day = ''.join(dal)
 
             r_dates = dates
@@ -2426,7 +2426,7 @@ def daily_item_based_reports5(request):
 
             dal = []
             dal.append(dl[8])
-            dal.append(dl[5])
+            dal.append(dl[9])
             day = ''.join(dal)
 
             r_dates = dates
@@ -2561,7 +2561,7 @@ def daily_ledger_based_reports5(request):
 
             dal = []
             dal.append(dl[8])
-            dal.append(dl[5])
+            dal.append(dl[9])
             day = ''.join(dal)
 
             r_dates = dates
@@ -2801,7 +2801,7 @@ def daily_accounts_book_based_reports5(request):
 
             dal = []
             dal.append(dl[8])
-            dal.append(dl[5])
+            dal.append(dl[9])
             day = ''.join(dal)
 
             r_dates = dates

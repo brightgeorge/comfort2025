@@ -2272,7 +2272,7 @@ def daily_category_wise1(request):
 
             dal = []
             dal.append(dl[8])
-            dal.append(dl[1])
+            dal.append(dl[9])
             day = ''.join(dal)
 
             r_dates = dates
@@ -2460,7 +2460,7 @@ def daily_detailed1(request):
 
             dal = []
             dal.append(dl[8])
-            dal.append(dl[1])
+            dal.append(dl[9])
             day = ''.join(dal)
 
             r_dates = dates
@@ -2473,7 +2473,6 @@ def daily_detailed1(request):
                 il.append(float(i.amount))
             if i.type == 'expense':
                 el.append(float(i.amount))
-        print('ill',il)
         sil=sum(il)
         sel=sum(el)
 
@@ -2662,7 +2661,7 @@ def daily_item_based_reports1(request):
 
             dal = []
             dal.append(dl[8])
-            dal.append(dl[1])
+            dal.append(dl[9])
             day = ''.join(dal)
 
             r_dates = dates
@@ -2795,7 +2794,7 @@ def daily_ledger_based_reports1(request):
 
             dal = []
             dal.append(dl[8])
-            dal.append(dl[1])
+            dal.append(dl[9])
             day = ''.join(dal)
 
             r_dates = dates
@@ -3035,7 +3034,7 @@ def daily_accounts_book_based_reports1(request):
 
             dal = []
             dal.append(dl[8])
-            dal.append(dl[1])
+            dal.append(dl[9])
             day = ''.join(dal)
 
             r_dates = dates
