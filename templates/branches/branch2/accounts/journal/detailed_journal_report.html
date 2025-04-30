@@ -346,7 +346,7 @@ function exportTableToExcel(tableID, filename = ''){
                  <th><button onclick="window.print()">Print</button></th>
                      <th ><a href="{% url 'in_exp_items_entry2' %}"> <button class="mybutton button1" style="background-color:green;color:white;"> <= BACK </button></a></th>
 
-                     <th ><a href="{% url 'journal_report_deleted15' %}"> <button class="mybutton button1" style="background-color:red;color:white;"><span style="background-color:red;color:white;">DELETED ENTRYS</span> </button></a></th>
+                     <th ><a href="{% url 'journal_report_deleted2' %}"> <button class="mybutton button1" style="background-color:red;color:white;"><span style="background-color:red;color:white;">DELETED ENTRYS</span> </button></a></th>
                  </tr>
 
            <div class="table-responsive">
@@ -380,7 +380,7 @@ function exportTableToExcel(tableID, filename = ''){
              </a>
               <div class="dropdown-menu dropdown-menu-right">
                   <a class="dropdown-item" href="{% url 'update_in_exp_items_entry2' id=i.id %}">Update Selected Entry</a>
-                <a class="dropdown-item" href="{% url 'delete_journal15' id=i.id %}">Delete Selected Entry</a>
+                <a class="dropdown-item" href="{% url 'delete_journal2' id=i.id %}">Delete Selected Entry</a>
 
                </div>
               </div>
