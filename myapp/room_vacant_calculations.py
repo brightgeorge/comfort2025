@@ -25,6 +25,7 @@ import branch42app
 
 import branch51app
 import branch52app
+import branch53app
 
 
 def vaccant_room_details(request):
@@ -89,6 +90,8 @@ def vaccant_room_details(request):
     comfort_ladies.append(len(total_guest_br51))
     total_guest_br52 = branch52app.models.pg1_new_beds.objects.all().exclude(flag=2)
     comfort_ladies.append(len(total_guest_br52))
+    total_guest_br53 = branch53app.models.pg1_new_beds.objects.all().exclude(flag=2)
+    comfort_ladies.append(len(total_guest_br53))
 
     total_guest = sum(comfort) + sum(prestige) + sum(perfect) + sum(happy_homes) + sum(comfort_ladies)
 
@@ -154,6 +157,8 @@ def total_vaccant_share1():
     tsv.append(len(total_guest_br51))
     total_guest_br52 = branch52app.models.pg1_new_beds.objects.all().filter(share_type='1').exclude(flag=2)
     tsv.append(len(total_guest_br52))
+    total_guest_br53 = branch53app.models.pg1_new_beds.objects.all().filter(share_type='1').exclude(flag=2)
+    tsv.append(len(total_guest_br53))
 
     return sum(tsv)
 
@@ -201,6 +206,8 @@ def total_vaccant_share2():
     tsv.append(len(total_guest_br51))
     total_guest_br52 = branch52app.models.pg1_new_beds.objects.all().filter(share_type='2').exclude(flag=2)
     tsv.append(len(total_guest_br52))
+    total_guest_br53 = branch53app.models.pg1_new_beds.objects.all().filter(share_type='2').exclude(flag=2)
+    tsv.append(len(total_guest_br53))
 
     return sum(tsv)
 
@@ -248,6 +255,8 @@ def total_vaccant_share3():
     tsv.append(len(total_guest_br51))
     total_guest_br52 = branch52app.models.pg1_new_beds.objects.all().filter(share_type='3').exclude(flag=2)
     tsv.append(len(total_guest_br52))
+    total_guest_br53 = branch53app.models.pg1_new_beds.objects.all().filter(share_type='3').exclude(flag=2)
+    tsv.append(len(total_guest_br53))
 
     return sum(tsv)
 
@@ -295,6 +304,8 @@ def total_vaccant_share4():
     tsv.append(len(total_guest_br51))
     total_guest_br52 = branch52app.models.pg1_new_beds.objects.all().filter(share_type='4').exclude(flag=2)
     tsv.append(len(total_guest_br52))
+    total_guest_br53 = branch53app.models.pg1_new_beds.objects.all().filter(share_type='4').exclude(flag=2)
+    tsv.append(len(total_guest_br53))
 
     return sum(tsv)
 
@@ -342,6 +353,8 @@ def total_vaccant_share5():
     tsv.append(len(total_guest_br51))
     total_guest_br52 = branch52app.models.pg1_new_beds.objects.all().filter(share_type='5').exclude(flag=2)
     tsv.append(len(total_guest_br52))
+    total_guest_br53 = branch53app.models.pg1_new_beds.objects.all().filter(share_type='5').exclude(flag=2)
+    tsv.append(len(total_guest_br53))
 
     return sum(tsv)
 
@@ -389,6 +402,8 @@ def total_vaccant_share6():
     tsv.append(len(total_guest_br51))
     total_guest_br52 = branch52app.models.pg1_new_beds.objects.all().filter(share_type='6').exclude(flag=2)
     tsv.append(len(total_guest_br52))
+    total_guest_br53 = branch53app.models.pg1_new_beds.objects.all().filter(share_type='6').exclude(flag=2)
+    tsv.append(len(total_guest_br53))
 
     return sum(tsv)
 
@@ -412,17 +427,17 @@ def total_vaccant_room():
 
 def total_vaccant_share_branch1():
     tsv = []
-    total_guest_br1 = pg1_new_beds.objects.all().filter(share_type='1').exclude(flag=2)
+    total_guest_br1 = branch1app.models.pg1_new_beds.objects.all().filter(share_type='1').exclude(flag=2)
     tsv.append(len(total_guest_br1))
-    total_guest_br2 = pg1_new_beds.objects.all().filter(share_type='2').exclude(flag=2)
+    total_guest_br2 = branch1app.models.pg1_new_beds.objects.all().filter(share_type='2').exclude(flag=2)
     tsv.append(len(total_guest_br2))
-    total_guest_br3 = pg1_new_beds.objects.all().filter(share_type='3').exclude(flag=2)
+    total_guest_br3 = branch1app.models.pg1_new_beds.objects.all().filter(share_type='3').exclude(flag=2)
     tsv.append(len(total_guest_br3))
-    total_guest_br4 = pg1_new_beds.objects.all().filter(share_type='4').exclude(flag=2)
+    total_guest_br4 = branch1app.models.pg1_new_beds.objects.all().filter(share_type='4').exclude(flag=2)
     tsv.append(len(total_guest_br4))
-    total_guest_br5 = pg1_new_beds.objects.all().filter(share_type='5').exclude(flag=2)
+    total_guest_br5 = branch1app.models.pg1_new_beds.objects.all().filter(share_type='5').exclude(flag=2)
     tsv.append(len(total_guest_br5))
-    total_guest_br5 = pg1_new_beds.objects.all().filter(share_type='6').exclude(flag=2)
+    total_guest_br5 = branch1app.models.pg1_new_beds.objects.all().filter(share_type='6').exclude(flag=2)
     tsv.append(len(total_guest_br5))
     return tsv
 

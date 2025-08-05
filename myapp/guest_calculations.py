@@ -25,6 +25,7 @@ import branch42app
 
 import branch51app
 import branch52app
+import branch53app
 
 
 
@@ -77,6 +78,8 @@ def branchwise_guest_details(request):
     comfort_ladies.append(len(total_guest_br51))
     total_guest_br52 = branch52app.models.pg1_new_beds.objects.all().filter(flag=2)
     comfort_ladies.append(len(total_guest_br52))
+    total_guest_br53 = branch53app.models.pg1_new_beds.objects.all().filter(flag=2)
+    comfort_ladies.append(len(total_guest_br53))
 
     total_guest = sum(comfort) + sum(prestige) + sum(perfect) + sum(happy_homes) + sum(comfort_ladies)
 

@@ -25,6 +25,7 @@ import branch42app
 
 import branch51app
 import branch52app
+import branch53app
 
 
 ######TOTAL COLLECTION START HERE
@@ -53,6 +54,7 @@ def total_collection_details(request):
 
     comfort_ladies1_total_collection = branch51app.admin_dashboard_calculations_br51.grand_total_collection()
     comfort_ladies2_total_collection = branch52app.admin_dashboard_calculations_br52.grand_total_collection()
+    comfort_ladies3_total_collection = branch53app.admin_dashboard_calculations_br53.grand_total_collection()
 
     from datetime import datetime
     cmm = datetime.now().month
@@ -85,6 +87,7 @@ def total_collection_details(request):
     comfort_ladies_total_collection = []
     comfort_ladies_total_collection.append(comfort_ladies1_total_collection[cm])
     comfort_ladies_total_collection.append(comfort_ladies2_total_collection[cm])
+    comfort_ladies_total_collection.append(comfort_ladies3_total_collection[cm])
 
     comfort_total_collections = sum(comfort_total_collection)
     prestige_total_collections = sum(prestige_total_collection)
@@ -120,6 +123,7 @@ def total_collection_details(request):
 
     comfort_ladies_advance1 = branch51app.admin_dashboard_calculations_br51.total_collection_advance()
     comfort_ladies_advance2 = branch52app.admin_dashboard_calculations_br52.total_collection_advance()
+    comfort_ladies_advance3 = branch53app.admin_dashboard_calculations_br53.total_collection_advance()
 
     comfort_advance = []
     comfort_advance.append(comfort_advance1)
@@ -149,6 +153,7 @@ def total_collection_details(request):
     comfort_ladies_advance = []
     comfort_ladies_advance.append(comfort_ladies_advance1)
     comfort_ladies_advance.append(comfort_ladies_advance2)
+    comfort_ladies_advance.append(comfort_ladies_advance3)
 
     comfort_advance = sum(comfort_advance)
     prestige_advance = sum(prestige_advance)
@@ -186,6 +191,7 @@ def total_collection_details(request):
 
     comfort_ladies_discount1 = branch51app.admin_dashboard_calculations_br51.total_discount()
     comfort_ladies_discount2 = branch52app.admin_dashboard_calculations_br52.total_discount()
+    comfort_ladies_discount3 = branch53app.admin_dashboard_calculations_br53.total_discount()
 
     comfort_discount = []
     comfort_discount.append(comfort_discount1)
@@ -214,7 +220,8 @@ def total_collection_details(request):
 
     comfort_ladies_discount = []
     comfort_ladies_discount.append(comfort_ladies_discount1)
-    comfort_ladies_discount.append(comfort_ladies_discount1)
+    comfort_ladies_discount.append(comfort_ladies_discount2)
+    comfort_ladies_discount.append(comfort_ladies_discount3)
 
     comfort_discount = sum(comfort_discount)
     prestige_discount = sum(prestige_discount)
@@ -263,6 +270,7 @@ def total_collection_details(request):
 
     comfort_ladies_total_collected_amount1 = branch51app.admin_dashboard_calculations_br51.total_collected_amount()
     comfort_ladies_total_collected_amount2 = branch52app.admin_dashboard_calculations_br52.total_collected_amount()
+    comfort_ladies_total_collected_amount3 = branch53app.admin_dashboard_calculations_br53.total_collected_amount()
 
     comfort_total_collected_amount = []
     comfort_total_collected_amount.append(comfort_total_collected_amount1)
@@ -292,6 +300,7 @@ def total_collection_details(request):
     comfort_ladies_total_collected_amount = []
     comfort_ladies_total_collected_amount.append(comfort_ladies_total_collected_amount1)
     comfort_ladies_total_collected_amount.append(comfort_ladies_total_collected_amount2)
+    comfort_ladies_total_collected_amount.append(comfort_ladies_total_collected_amount3)
 
     comfort_total_collected_amount = sum(comfort_total_collected_amount)
     prestige_total_collected_amount = sum(prestige_total_collected_amount)
@@ -330,6 +339,7 @@ def total_collection_details(request):
 
     comfort_ladies_due_amount1 = branch51app.admin_dashboard_calculations_br51.total_due()
     comfort_ladies_due_amount2 = branch52app.admin_dashboard_calculations_br52.total_due()
+    comfort_ladies_due_amount3 = branch53app.admin_dashboard_calculations_br53.total_due()
 
     comfort_due_amount = []
     comfort_due_amount.append(comfort_due_amount1)
@@ -359,6 +369,7 @@ def total_collection_details(request):
     comfort_ladies_due_amount = []
     comfort_ladies_due_amount.append(comfort_ladies_due_amount1)
     comfort_ladies_due_amount.append(comfort_ladies_due_amount2)
+    comfort_ladies_due_amount.append(comfort_ladies_due_amount3)
 
     comfort_due_amount = sum(comfort_due_amount)
     prestige_due_amount = sum(prestige_due_amount)
@@ -420,24 +431,24 @@ def total_collection_details(request):
     return render(request,'admindashboard/total_collection_calculations/total_collection_calculations_details.html',context)
 
 def total_advance():
-    a1 = admin_dashboard_calculations_br1.total_collection_advance()
+    a1 = branch1app.admin_dashboard_calculations_br1.total_collection_advance()
     a2 = branch2app.admin_dashboard_calculations_br2.total_collection_advance()
     a3 = branch3app.admin_dashboard_calculations_br3.total_collection_advance()
     a4 = branch4app.admin_dashboard_calculations_br4.total_collection_advance()
     a5 = branch5app.admin_dashboard_calculations_br5.total_collection_advance()
     a6 = branch6app.admin_dashboard_calculations_br6.total_collection_advance()
     a7 = branch7app.admin_dashboard_calculations_br7.total_collection_advance()
-    a8 = branch8app.admin_dashboard_calculations_br8.total_collection_advance()
-    a9 = branch9app.admin_dashboard_calculations_br9.total_collection_advance()
+    #a8 = branch8app.admin_dashboard_calculations_br8.total_collection_advance()
+    #a9 = branch9app.admin_dashboard_calculations_br9.total_collection_advance()
 
-    a10 = branch10app.admin_dashboard_calculations_br10.total_collection_advance()
-    a11 = branch11app.admin_dashboard_calculations_br11.total_collection_advance()
-    a12 = branch12app.admin_dashboard_calculations_br12.total_collection_advance()
-    a13 = branch13app.admin_dashboard_calculations_br13.total_collection_advance()
-    a14 = branch14app.admin_dashboard_calculations_br14.total_collection_advance()
+    #a10 = branch10app.admin_dashboard_calculations_br10.total_collection_advance()
+    #a11 = branch11app.admin_dashboard_calculations_br11.total_collection_advance()
+    #a12 = branch12app.admin_dashboard_calculations_br12.total_collection_advance()
+    #a13 = branch13app.admin_dashboard_calculations_br13.total_collection_advance()
+    #a14 = branch14app.admin_dashboard_calculations_br14.total_collection_advance()
 
-    a15 = branch15app.admin_dashboard_calculations_br15.total_collection_advance()
-    a16 = branch16app.admin_dashboard_calculations_br16.total_collection_advance()
+    #a15 = branch15app.admin_dashboard_calculations_br15.total_collection_advance()
+    #a16 = branch16app.admin_dashboard_calculations_br16.total_collection_advance()
 
     l = []
     l.append(a1)
@@ -447,41 +458,41 @@ def total_advance():
     l.append(a5)
     l.append(a6)
     l.append(a7)
-    l.append(a8)
-    l.append(a9)
+    #l.append(a8)
+    #l.append(a9)
 
-    l.append(a10)
-    l.append(a11)
-    l.append(a12)
-    l.append(a13)
-    l.append(a14)
+    #l.append(a10)
+    #l.append(a11)
+    #l.append(a12)
+    #l.append(a13)
+    #l.append(a14)
 
-    l.append(a15)
-    l.append(a16)
+    #l.append(a15)
+    #l.append(a16)
 
     gtc = sum(l)
     print('this is total branch gtc sum', gtc)
     return gtc
 
 def total_discount():
-    a1 = admin_dashboard_calculations_br1.total_discount()
+    a1 = branch2app.admin_dashboard_calculations_br1.total_discount()
     a2 = branch2app.admin_dashboard_calculations_br2.total_discount()
     a3 = branch3app.admin_dashboard_calculations_br3.total_discount()
     a4 = branch4app.admin_dashboard_calculations_br4.total_discount()
     a5 = branch5app.admin_dashboard_calculations_br5.total_discount()
     a6 = branch6app.admin_dashboard_calculations_br6.total_discount()
     a7 = branch7app.admin_dashboard_calculations_br7.total_discount()
-    a8 = branch8app.admin_dashboard_calculations_br8.total_discount()
-    a9 = branch9app.admin_dashboard_calculations_br9.total_discount()
+    #a8 = branch8app.admin_dashboard_calculations_br8.total_discount()
+    #a9 = branch9app.admin_dashboard_calculations_br9.total_discount()
 
-    a10 = branch10app.admin_dashboard_calculations_br10.total_discount()
-    a11 = branch11app.admin_dashboard_calculations_br11.total_discount()
-    a12 = branch12app.admin_dashboard_calculations_br12.total_discount()
-    a13 = branch13app.admin_dashboard_calculations_br13.total_discount()
-    a14 = branch14app.admin_dashboard_calculations_br14.total_discount()
+    #a10 = branch10app.admin_dashboard_calculations_br10.total_discount()
+    #a11 = branch11app.admin_dashboard_calculations_br11.total_discount()
+    #a12 = branch12app.admin_dashboard_calculations_br12.total_discount()
+    #a13 = branch13app.admin_dashboard_calculations_br13.total_discount()
+    #a14 = branch14app.admin_dashboard_calculations_br14.total_discount()
 
-    a15 = branch15app.admin_dashboard_calculations_br15.total_discount()
-    a16 = branch16app.admin_dashboard_calculations_br16.total_discount()
+    #a15 = branch15app.admin_dashboard_calculations_br15.total_discount()
+    #a16 = branch16app.admin_dashboard_calculations_br16.total_discount()
 
     l = []
     l.append(a1)
@@ -491,41 +502,41 @@ def total_discount():
     l.append(a5)
     l.append(a6)
     l.append(a7)
-    l.append(a8)
-    l.append(a9)
+    #l.append(a8)
+    #l.append(a9)
 
-    l.append(a10)
-    l.append(a11)
-    l.append(a12)
-    l.append(a13)
-    l.append(a14)
+    #l.append(a10)
+    #l.append(a11)
+    #l.append(a12)
+    #l.append(a13)
+    #l.append(a14)
 
-    l.append(a15)
-    l.append(a16)
+    #l.append(a15)
+    #l.append(a16)
 
     gtc = sum(l)
     print('this is total branch gtc sum', gtc)
     return gtc
 
 def all_total_collatable_amount():
-    a1 = admin_dashboard_calculations_br1.total_colatable_amount()
+    a1 = branch1app.admin_dashboard_calculations_br1.total_colatable_amount()
     a2 = branch2app.admin_dashboard_calculations_br2.total_colatable_amount()
     a3 = branch3app.admin_dashboard_calculations_br3.total_colatable_amount()
     a4 = branch4app.admin_dashboard_calculations_br4.total_colatable_amount()
     a5 = branch5app.admin_dashboard_calculations_br5.total_colatable_amount()
     a6 = branch6app.admin_dashboard_calculations_br6.total_colatable_amount()
     a7 = branch7app.admin_dashboard_calculations_br7.total_colatable_amount()
-    a8 = branch8app.admin_dashboard_calculations_br8.total_colatable_amount()
-    a9 = branch9app.admin_dashboard_calculations_br9.total_colatable_amount()
+    #a8 = branch8app.admin_dashboard_calculations_br8.total_colatable_amount()
+    #a9 = branch9app.admin_dashboard_calculations_br9.total_colatable_amount()
 
-    a10 = branch10app.admin_dashboard_calculations_br10.total_colatable_amount()
-    a11 = branch11app.admin_dashboard_calculations_br11.total_colatable_amount()
-    a12 = branch12app.admin_dashboard_calculations_br12.total_colatable_amount()
-    a13 = branch13app.admin_dashboard_calculations_br13.total_colatable_amount()
-    a14 = branch14app.admin_dashboard_calculations_br14.total_colatable_amount()
+    #a10 = branch10app.admin_dashboard_calculations_br10.total_colatable_amount()
+    #a11 = branch11app.admin_dashboard_calculations_br11.total_colatable_amount()
+    #a12 = branch12app.admin_dashboard_calculations_br12.total_colatable_amount()
+    #a13 = branch13app.admin_dashboard_calculations_br13.total_colatable_amount()
+    #a14 = branch14app.admin_dashboard_calculations_br14.total_colatable_amount()
 
-    a15 = branch15app.admin_dashboard_calculations_br15.total_colatable_amount()
-    a16 = branch16app.admin_dashboard_calculations_br16.total_colatable_amount()
+    #a15 = branch15app.admin_dashboard_calculations_br15.total_colatable_amount()
+    #a16 = branch16app.admin_dashboard_calculations_br16.total_colatable_amount()
 
     l = []
     l.append(a1)
@@ -535,41 +546,41 @@ def all_total_collatable_amount():
     l.append(a5)
     l.append(a6)
     l.append(a7)
-    l.append(a8)
-    l.append(a9)
+    #l.append(a8)
+    #l.append(a9)
 
-    l.append(a10)
-    l.append(a11)
-    l.append(a12)
-    l.append(a13)
-    l.append(a14)
+    #l.append(a10)
+    #l.append(a11)
+    #l.append(a12)
+    #l.append(a13)
+    #l.append(a14)
 
-    l.append(a15)
-    l.append(a16)
+    #l.append(a15)
+    #l.append(a16)
 
     gtc = sum(l)
     print('this is total branch gtc sum', gtc)
     return gtc
 
 def all_total_collected_amount():
-    a1 = admin_dashboard_calculations_br1.total_collected_amount()
+    a1 = branch1app.admin_dashboard_calculations_br1.total_collected_amount()
     a2 = branch2app.admin_dashboard_calculations_br2.total_collected_amount()
     a3 = branch3app.admin_dashboard_calculations_br3.total_collected_amount()
     a4 = branch4app.admin_dashboard_calculations_br4.total_collected_amount()
     a5 = branch5app.admin_dashboard_calculations_br5.total_collected_amount()
     a6 = branch6app.admin_dashboard_calculations_br6.total_collected_amount()
     a7 = branch7app.admin_dashboard_calculations_br7.total_collected_amount()
-    a8 = branch8app.admin_dashboard_calculations_br8.total_collected_amount()
-    a9 = branch9app.admin_dashboard_calculations_br9.total_collected_amount()
+    #a8 = branch8app.admin_dashboard_calculations_br8.total_collected_amount()
+    #a9 = branch9app.admin_dashboard_calculations_br9.total_collected_amount()
 
-    a10 = branch10app.admin_dashboard_calculations_br10.total_collected_amount()
-    a11 = branch11app.admin_dashboard_calculations_br11.total_collected_amount()
-    a12 = branch12app.admin_dashboard_calculations_br12.total_collected_amount()
-    a13 = branch13app.admin_dashboard_calculations_br13.total_collected_amount()
-    a14 = branch14app.admin_dashboard_calculations_br14.total_collected_amount()
+    #a10 = branch10app.admin_dashboard_calculations_br10.total_collected_amount()
+    #a11 = branch11app.admin_dashboard_calculations_br11.total_collected_amount()
+    #a12 = branch12app.admin_dashboard_calculations_br12.total_collected_amount()
+    #a13 = branch13app.admin_dashboard_calculations_br13.total_collected_amount()
+    #a14 = branch14app.admin_dashboard_calculations_br14.total_collected_amount()
 
-    a15 = branch15app.admin_dashboard_calculations_br15.total_collected_amount()
-    a16 = branch16app.admin_dashboard_calculations_br16.total_collected_amount()
+    #a15 = branch15app.admin_dashboard_calculations_br15.total_collected_amount()
+    #a16 = branch16app.admin_dashboard_calculations_br16.total_collected_amount()
 
     l = []
     l.append(a1)
@@ -579,17 +590,17 @@ def all_total_collected_amount():
     l.append(a5)
     l.append(a6)
     l.append(a7)
-    l.append(a8)
-    l.append(a9)
+    #l.append(a8)
+    #l.append(a9)
 
-    l.append(a10)
-    l.append(a11)
-    l.append(a12)
-    l.append(a13)
-    l.append(a14)
+    #l.append(a10)
+    #l.append(a11)
+    #l.append(a12)
+    #l.append(a13)
+    #l.append(a14)
 
-    l.append(a15)
-    l.append(a16)
+    #l.append(a15)
+    #l.append(a16)
 
     gtc = sum(l)
     print('this is total branch gtc sum', gtc)
