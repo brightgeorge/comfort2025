@@ -8085,7 +8085,7 @@ def viewall_vacate_guest_ob_ch4(request):
 
         #'vg': pg1_new_guest.objects.all().filter(flag=3, remark__gt='0').exclude(remark='').order_by('-id'),
         'vgs':pg1_new_guest.objects.all().filter(flag=3).order_by('-id'),
-        'vsum' : vcated_guest(),
+        #'vsum' : vcated_guest(),
         'll' : vcated_guest_list,
 
     }
