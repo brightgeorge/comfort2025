@@ -73,6 +73,8 @@ INSTALLED_APPS = [
     'branch51app',
     'branch52app',
     'branch53app',
+
+    'ledger_app',
 ]
 
 MIDDLEWARE = [
@@ -126,7 +128,6 @@ DATABASES = {
         'PASSWORD': '#123.com#',
         #'PASSWORD': '',
         'HOST': 'localhost',
-
     }
 }
 

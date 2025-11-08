@@ -84,6 +84,31 @@
       </li>
 
              <li>
+        <a href="{% url 'ledger_list' %}">
+          <i class="zmdi zmdi-view-dashboard"></i> <span>ledger_list</span>
+        </a>
+      </li>
+
+
+
+
+            <li id="mycolor">
+       <div class="dropdown show" id="mycolor">
+  <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink mycolor" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     <i class="zmdi zmdi-view-dashboard" id="mycolor"></i> <span id="mycolor" style="color:white">CASH MGT </span>
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink mycolor">
+    <a class="dropdown-item btn-danger" href="{% url 'ledger_list' %}"><i class="zmdi zmdi-invert-colors"></i>
+        <span>Tally App </span></a>
+
+  </div>
+</div>
+       </li>
+
+
+
+             <li>
         <a href="{% url 'admin_home' %}">
           <i class="zmdi zmdi-view-dashboard"></i> <span>Admin Home</span>
         </a>
