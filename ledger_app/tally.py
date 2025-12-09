@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from datetime import datetime, date, time
 from django.utils import timezone
 from django.contrib import messages
-from .models import LedgerEntry
+from .models import LedgerEntry, LedgerEntryBackups
 import openpyxl
 
 def _fmt_currency(value):
@@ -114,6 +114,7 @@ def add_credit(request):
         amount = request.POST.get('amount') or None
         amount = float(amount) if amount not in [None,''] else None
         LedgerEntry.objects.create(particular_credit=particular, credit_amount=amount,flag=1)
+        LedgerEntryBackups.objects.create(particular_credit=particular, credit_amount=amount, flag=1)
         messages.success(request, 'Credit entry added successfully!')
         return redirect('ledger_list')
     return render(request, 'ledger_app/add_credit.html')
@@ -124,6 +125,7 @@ def add_debit(request):
         amount = request.POST.get('amount') or None
         amount = float(amount) if amount not in [None,''] else None
         LedgerEntry.objects.create(particular_debit=particular, debit_amount=amount,flag=1)
+        LedgerEntryBackups.objects.create(particular_debit=particular, debit_amount=amount, flag=1)
         messages.success(request, 'Debit entry added successfully!')
         return redirect('ledger_list')
     return render(request, 'ledger_app/add_debit.html')
@@ -137,6 +139,7 @@ def edit_credit(request, id):
         entry.particular_debit = None
         entry.debit_amount = None
         entry.save()
+        LedgerEntryBackups.objects.create(particular_credit=request.POST.get('particular') or None, credit_amount=float(amt) if amt not in [None,''] else None, flag=1)
         messages.success(request, 'Credit entry updated successfully!')
         return redirect('ledger_list')
     return render(request, 'ledger_app/edit_credit.html', {'entry': entry})
@@ -150,6 +153,7 @@ def edit_debit(request, id):
         entry.particular_credit = None
         entry.credit_amount = None
         entry.save()
+        LedgerEntryBackups.objects.create(particular_debit=request.POST.get('particular') or None, debit_amount=float(amt) if amt not in [None,''] else None, flag=1)
         messages.success(request, 'Debit entry updated successfully!')
         return redirect('ledger_list')
     return render(request, 'ledger_app/edit_debit.html', {'entry': entry})
@@ -214,3 +218,18 @@ def export_ledger_to_excel(request):
     response['Content-Disposition'] = 'attachment; filename=ledger_report.xlsx'
     wb.save(response)
     return response
+
+def credit_all_entry_history(request):
+    entries = LedgerEntryBackups.objects.filter(flag=1).order_by('-id')
+    credits = entries.filter(credit_amount__isnull=False).order_by('-id')
+    context = {
+        'entries': credits,
+    }
+    return render(request, 'ledger_app/credit_all_entry_history.html', context)
+def debit_all_entry_history(request):
+    entries = LedgerEntryBackups.objects.filter(flag=1).order_by('-id')
+    debits = entries.filter(debit_amount__isnull=False).order_by('-id')
+    context = {
+        'entries': debits,
+    }
+    return render(request, 'ledger_app/debit_all_entry_history.html', context)

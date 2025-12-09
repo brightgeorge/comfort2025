@@ -7,6 +7,7 @@
       <a class="btn debit" href="{% url 'add_debit' %}" target="_blank">➕ Add Debit</a>
       <a class="btn" href="?show_all=1">Show All Entries</a>
       <a class="btn success" href="{% url 'export_ledger_to_excel' %}?start={{ start }}&end={{ end }}&show_all={{ show_all }}">Export</a>
+      <a class="btn" href="{% url 'credit_all_entry_history' %}" target="_blank" style="color:white;background-color:orange;r">History</a>
     </div>
     <div class="right-controls">
       <form method="get" class="filter-form">
