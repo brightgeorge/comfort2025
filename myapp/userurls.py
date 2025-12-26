@@ -21,11 +21,7 @@ urlpatterns = [
     path('select_branch/',views.select_branch,name='select_branch'),
     path('admin_home/',views.admin_home,name='admin_home'),
 
-    path('branchwise_guest_details/',guest_calculations.branchwise_guest_details,name='branchwise_guest_details'),
 
-    path('vaccant_room_details/',room_vacant_calculations.vaccant_room_details,name='vaccant_room_details'),
-
-    path('total_collection_details/',collection_calculations.total_collection_details,name='total_collection_details'),
 
     # logout
     path('logout/', views.logout, name='logout'),
