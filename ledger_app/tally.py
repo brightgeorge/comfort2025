@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from datetime import datetime, date, time
 from django.utils import timezone
 from django.contrib import messages
-from .models import LedgerEntry
+from .models import LedgerEntry, LedgerEntryBackups
 import openpyxl
 
 def _fmt_currency(value):
@@ -114,6 +114,7 @@ def add_credit(request):
         amount = request.POST.get('amount') or None
         amount = float(amount) if amount not in [None,''] else None
         LedgerEntry.objects.create(particular_credit=particular, credit_amount=amount,flag=1)
+        LedgerEntryBackups.objects.create(particular_credit=particular, credit_amount=amount, flag=1)
         messages.success(request, 'Credit entry added successfully!')
         return redirect('ledger_list')
     return render(request, 'ledger_app/add_credit.html')
@@ -124,6 +125,7 @@ def add_debit(request):
         amount = request.POST.get('amount') or None
         amount = float(amount) if amount not in [None,''] else None
         LedgerEntry.objects.create(particular_debit=particular, debit_amount=amount,flag=1)
+        LedgerEntryBackups.objects.create(particular_debit=particular, debit_amount=amount, flag=1)
         messages.success(request, 'Debit entry added successfully!')
         return redirect('ledger_list')
     return render(request, 'ledger_app/add_debit.html')
@@ -137,6 +139,7 @@ def edit_credit(request, id):
         entry.particular_debit = None
         entry.debit_amount = None
         entry.save()
+        LedgerEntryBackups.objects.create(particular_credit=request.POST.get('particular') or None, credit_amount=float(amt) if amt not in [None,''] else None, flag=1)
         messages.success(request, 'Credit entry updated successfully!')
         return redirect('ledger_list')
     return render(request, 'ledger_app/edit_credit.html', {'entry': entry})
@@ -150,6 +153,7 @@ def edit_debit(request, id):
         entry.particular_credit = None
         entry.credit_amount = None
         entry.save()
+        LedgerEntryBackups.objects.create(particular_debit=request.POST.get('particular') or None, debit_amount=float(amt) if amt not in [None,''] else None, flag=1)
         messages.success(request, 'Debit entry updated successfully!')
         return redirect('ledger_list')
     return render(request, 'ledger_app/edit_debit.html', {'entry': entry})
@@ -214,3 +218,154 @@ def export_ledger_to_excel(request):
     response['Content-Disposition'] = 'attachment; filename=ledger_report.xlsx'
     wb.save(response)
     return response
+
+def credit_all_entry_history(request):
+    entries = LedgerEntryBackups.objects.filter(flag=1).order_by('-id')
+    credits = entries.filter(credit_amount__isnull=False).order_by('-id')
+    context = {
+        'entries': credits,
+    }
+    return render(request, 'ledger_app/credit_all_entry_history.html', context)
+def debit_all_entry_history(request):
+    entries = LedgerEntryBackups.objects.filter(flag=1).order_by('-id')
+    debits = entries.filter(debit_amount__isnull=False).order_by('-id')
+    context = {
+        'entries': debits,
+    }
+    return render(request, 'ledger_app/debit_all_entry_history.html', context)
+
+
+#########################################
+####new server backup code start here
+########################################
+
+def view_all_LedgerEntry_entries(request):
+    result = LedgerEntry.objects.all()
+    context = {
+        'entries': result,
+    }
+    return render(request, 'ledger_app/backup/view_all_LedgerEntry_entries.html', context)
+
+
+
+
+
+
+
+
+
+
+
+
+import pandas as pd
+from django.shortcuts import render
+
+def upload_ledger_excel(request):
+    rows = []
+
+    if request.method == "POST" and request.FILES.get('excel_file'):
+        excel_file = request.FILES['excel_file']
+
+        # Read Excel
+        df = pd.read_excel(excel_file)
+
+        # Replace NaN with None
+        df = df.where(pd.notnull(df), None)
+
+        # Loop rows
+        for _, row in df.iterrows():
+            rows.append({
+                'timestamp': row.get('Timestamp'),
+                'credit_particular': row.get('Credit Particular'),
+                'credit_amount': row.get('Credit Amount') or 0,
+                'debit_particular': row.get('Debit Particular'),
+                'debit_amount': row.get('Debit Amount') or 0,
+            })
+
+    return render(
+        request,
+        'ledger_app/backup/upload_ledger.html',
+        {'rows': rows}
+    )
+
+
+
+
+
+from django.shortcuts import redirect
+from django.utils.dateparse import parse_datetime
+from decimal import Decimal
+from .models import LedgerEntry
+
+
+def safe_decimal(value):
+    if value in [None, '', 'nan', 'NaN']:
+        return None
+    try:
+        return Decimal(value)
+    except:
+        return None
+
+
+def save_ledger_entries(request):
+    if request.method == "POST":
+
+        timestamps = request.POST.getlist('timestamp[]')
+        pc = request.POST.getlist('credit_particular[]')
+        ca = request.POST.getlist('credit_amount[]')
+        pd_ = request.POST.getlist('debit_particular[]')
+        da = request.POST.getlist('debit_amount[]')
+
+        entries = []
+
+        total_rows = len(timestamps)
+
+        for i in range(total_rows):
+
+            # Skip empty rows
+            if not pc[i] and not pd_[i]:
+                continue
+
+            # Convert timestamp properly
+            parsed_timestamp = parse_datetime(timestamps[i])
+
+            entries.append(
+                LedgerEntry(
+                    timestamp=parsed_timestamp,
+                    particular_credit=pc[i] or None,
+                    credit_amount=safe_decimal(ca[i]),
+                    particular_debit=pd_[i] or None,
+                    debit_amount=safe_decimal(da[i]),
+                    flag=1  # Default flag
+                )
+            )
+
+        if entries:
+            LedgerEntry.objects.bulk_create(entries)
+
+        return redirect('upload_ledger')
+
+#################################################
+#####HISTORY BACKUP CODE START HERE ############
+################################################
+######CREDIT HISTORY BACKUP START HERE ###########
+
+def all_history_entries(request):
+    entries = LedgerEntryBackups.objects.filter(flag=1).order_by('-id')
+
+    context = {
+        'entries': entries,
+    }
+    return render(request, 'ledger_app/all_history_entries.html', context)
+
+
+def view_all_CREDIT_HISTORY_entries(request):
+    result = LedgerEntry.objects.all()
+    context = {
+        'entries': result,
+    }
+    return render(request, 'ledger_app/backup/history/credit/view_all_CREDIT_HISTORY_entries.html', context)
+
+
+
+

@@ -11,4 +11,15 @@ urlpatterns = [
     path('delete-debit/<int:id>/', tally.delete_debit, name='delete_debit'),
     path('export/', tally.export_ledger_to_excel, name='export_ledger_to_excel'),
 
+    path('credit_all_entry_history/',tally.credit_all_entry_history,name='credit_all_entry_history'),
+    path('debit_all_entry_history/',tally.debit_all_entry_history,name='debit_all_entry_history'),
+    path('all_history_entries/',tally.all_history_entries,name='all_history_entries'),
+
+
+
+    path('view_all_LedgerEntry_entries/',tally.view_all_LedgerEntry_entries,name='view_all_LedgerEntry_entries'),
+
+    path('upload-ledger/', tally.upload_ledger_excel, name='upload_ledger'),
+    path('save-ledger/', tally.save_ledger_entries, name='save_ledger'),
+
 ]

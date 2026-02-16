@@ -1,0 +1,47 @@
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="excel_file" required>
+    <button type="submit">Upload & Preview</button>
+</form>
+
+{% if rows %}
+    <h3>Preview Ledger Entries</h3>
+
+    <form method="post" action="{% url 'save_ledger' %}">
+        {% csrf_token %}
+
+        <table border="1" cellpadding="5">
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Credit Particular</th>
+                    <th>Credit Amount</th>
+                    <th>Debit Particular</th>
+                    <th>Debit Amount</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td>{{ row.timestamp }}</td>
+                    <td>{{ row.credit_particular }}</td>
+                    <td>{{ row.credit_amount }}</td>
+                    <td>{{ row.debit_particular }}</td>
+                    <td>{{ row.debit_amount }}</td>
+                </tr>
+
+                <!-- Hidden inputs -->
+                <input type="hidden" name="timestamp[]" value="{{ row.timestamp }}">
+                <input type="hidden" name="credit_particular[]" value="{{ row.credit_particular }}">
+                <input type="hidden" name="credit_amount[]" value="{{ row.credit_amount }}">
+                <input type="hidden" name="debit_particular[]" value="{{ row.debit_particular }}">
+                <input type="hidden" name="debit_amount[]" value="{{ row.debit_amount }}">
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <br>
+        <button type="submit">Confirm & Save</button>
+    </form>
+{% endif %}
